@@ -3,6 +3,9 @@ https://github.com/gandyland/todo-app-react
 React Lesson Plan:
 https://github.com/ga-wdi-lessons/react-intro
 
+Walkthrough:
+https://pankajparashar.com/posts/todo-app-react-js/
+
 # React Todo App
 
 Today's objective is to apply the fundamentals of what we learned yesterday to build
