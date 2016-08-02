@@ -19,6 +19,7 @@ var TodoApp = React.createClass({
     );
   }
 });
+// export default Hello
 
 
 // // Developer TODO: add App component
@@ -35,4 +36,3 @@ var TodoApp = React.createClass({
 //   }
 // }
 //
-export default Hello
