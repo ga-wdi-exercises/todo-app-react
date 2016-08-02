@@ -1,3 +1,6 @@
+GitHub:
+https://github.com/gandyland/todo-app-react
+
 # React Todo App
 
 Today's objective is to apply the fundamentals of what we learned yesterday to build
