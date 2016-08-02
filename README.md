@@ -1,5 +1,7 @@
 GitHub:
 https://github.com/gandyland/todo-app-react
+React Lesson Plan:
+https://github.com/ga-wdi-lessons/react-intro
 
 # React Todo App
 

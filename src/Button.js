@@ -1,15 +1,4 @@
 import React, { Component } from 'react';
-
-class Button extends Component {
-  render() {
-    // ...
-  }
-}
-
-export default Button; // Don’t forget to use export default!
-
-
-import React, { Component } from 'react';
 import './Button.css'; // Tell Webpack that Button.js uses these styles
 
 class Button extends Component {
@@ -18,3 +7,5 @@ class Button extends Component {
     return <div className="Button" />;
   }
 }
+
+export default Button; // Don’t forget to use export default!
