@@ -1,3 +1,5 @@
+import React, {Component} from 'react'
+
 var TodoForm = React.createClass({
  getInitialState: function() {
    return {item: ''};

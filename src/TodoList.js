@@ -1,3 +1,5 @@
+import React, {Component} from 'react'
+
 var TodoList = React.createClass({
  render: function() {
    var createItem = function(itemText) {
