@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 
-
 var TodoApp = React.createClass({
   getInitialState: function(){
     return {items: []};
