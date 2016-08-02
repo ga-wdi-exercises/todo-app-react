@@ -1,6 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Hello from './App.js'
+import TodoApp from './TodoApp.js'
+import TodoBanner from './TodoBanner.js'
+import TodoFrom from './TodoFrom.js'
+import TodoList from './TodoList.js'
 
 ReactDOM.render(
   <Hello />,
