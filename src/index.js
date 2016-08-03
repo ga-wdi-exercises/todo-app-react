@@ -9,9 +9,9 @@ class NewItem extends React.Component {
   }
 
   render(){
-    return <form onSubmit={e => this.create(e) }>
-      <input type='text' value={this.state.newItem} onChange = { e => e.target.value}>
-    </form>
+    return (<form onSubmit={e => this.create(e) }>
+      <input type='text' value={this.state.newItem} onChange = { e => e.target.value}/>
+    </form>)
   }
   change(e) {
     this.setState({
@@ -21,7 +21,7 @@ class NewItem extends React.Component {
   create(e){
     e.preventDefault()
     this.props.onCreate(this.state.newItem)
-    this.setState({newItem:''})
+    this.setState({newItem: ''})
     console.log(this.state.newItem)
   }
 
@@ -30,7 +30,7 @@ class NewItem extends React.Component {
 class List extends React.Component {
   constructor(props){
     super(props)
-    props.newItem = ''
+
     this.state = props
   }
 
@@ -42,8 +42,8 @@ class List extends React.Component {
   }
 
   render(){
-    return <div>
-    <NewItem newItem='' onCreate={ text => this.addItem(text)}>
+    return (<div>
+    <NewItem newItem='' onCreate={ text => this.addItem(text)}/>
     <form>
       <input type="text" value ='' onChange={ e => this.change(e)} />
     </form>
@@ -52,7 +52,7 @@ class List extends React.Component {
       return <li key={index}>{item}</li>
     })}
     </ul>
-    </div>
+    </div>)
   }
 }
 // .map's properies allow item then index?
