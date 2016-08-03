@@ -3,9 +3,6 @@ import React, {Component} from 'react'
 import Item from './Item.js'
 
 class Todo extends Component {
-  getInitialState() {
-      return {value: Item.state.body};
-    }
   handleChange(event) {
     this.setState({value: event.target.value});
     }
