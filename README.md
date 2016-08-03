@@ -25,7 +25,7 @@ Ultimately, it is up to you how your application should function but the app sho
 
 **Gold**
 * As a user, I should be able to make a new list
-* As a user, I should be able to edit a list
+* As a user, I should be able to make edit a list
 * As a user, I should be able to delete a list.
 
 **Platinum**
@@ -42,12 +42,9 @@ $ cd todo-app-react
 $ npm i
 $ npm start
 ```
-
  If every thing was installed correctly, you should now be able to view starter application on [http://localhost:3000](http://localhost:3000)
 
-
- <!--Begin Boilerplate  -->
-
+ <!-- Begin Boilerplate  -->
 
 ### Folder Structure
 
