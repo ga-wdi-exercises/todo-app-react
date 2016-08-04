@@ -1,7 +1,22 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDOM from "react-dom"
 
-class NewItem extends React.Component{
+//Edit Button Component
+class EditButton extends Component{
+  render(){
+    return(<button>Edit</button>);
+  }
+}
+
+//Delete Button Component
+class DeleteButton extends Component{
+  render(){
+    return(<button>Delete</button>);
+  }
+}
+
+//New Item Component
+class NewItem extends Component{
   constructor(props){
     super()
     this.state = props
@@ -28,7 +43,8 @@ class NewItem extends React.Component{
   }
 }
 
-class List extends React.Component{
+//TodoList Component
+class TodoList extends Component{
   constructor(props){
     super()
     this.state = props
@@ -42,14 +58,14 @@ class List extends React.Component{
   render(){
     return <div>
     <NewItem newItem='' onCreate={ text => this.addItem(text) }/>
-    <ul>
+    <ol>
       {this.props.items.map((item, index) => {return <li key={index}>{item}</li>
     })}
-    </ul>
+    </ol>
     </div>
   }
 }
 
 
-let items = ["1. Finish lab","2. Go home", "3. Eat a burger"];
-ReactDOM.render(<List items={items}/>, document.getElementById('root'))
+let items = ["Work on lab", "Finish Lab", "Eat Dinner", "Binge Watch L&O SVU"];
+ReactDOM.render(<TodoList items={items}/>, document.getElementById('root'))
