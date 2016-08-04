@@ -1,17 +1,21 @@
 import React, {Component} from "react"
 import ReactDOM from "react-dom"
-import toDo from "./App.js"
+// import toDo from "./App.js"
 
-class NewItem extends React.Component {
+class NewItem extends Component {
   constructor(props){
-    super()
+    super(props)
     this.state = props
   }
 
   render(){
-    return (<form onSubmit={e => this.create(e) }>
-      <input type='text' value={this.state.newItem} onChange = { e => e.target.value}/>
-    </form>)
+    return (
+    <h1>
+    <form onSubmit={e => this.create(e) }>
+      <input type='text' placeholder="new to-do" value={this.state.newItem} onChange = { e => this.change(e)}/>
+    </form>
+    </h1>
+    )
   }
   change(e) {
     this.setState({
@@ -21,8 +25,8 @@ class NewItem extends React.Component {
   create(e){
     e.preventDefault()
     this.props.onCreate(this.state.newItem)
-    this.setState({newItem: ''})
     console.log(this.state.newItem)
+    this.setState({newItem: ''})
   }
 
 }
@@ -30,7 +34,6 @@ class NewItem extends React.Component {
 class List extends React.Component {
   constructor(props){
     super(props)
-
     this.state = props
   }
 
@@ -44,17 +47,34 @@ class List extends React.Component {
   render(){
     return (<div>
     <NewItem newItem='' onCreate={ text => this.addItem(text)}/>
-    <form>
-      <input type="text" value ='' onChange={ e => this.change(e)} />
-    </form>
+
     <ul>
     {this.props.items.map( (item, index) => {
-      return <li key={index}>{item}</li>
+      return <Item key={index} item={item}  />
     })}
     </ul>
     </div>)
   }
 }
+
+class Item extends Component {
+  constructor(props){
+    super()
+    this.state = props
+  }
+  render(){
+    return (
+      (<li onClick={e => this.edit(e)} key={this.props.index}> {this.props.item} </li>)
+    )
+  }
+  edit(e){
+    console.log(this.state.item)
+    this.setState({
+
+    })
+  }
+}
+
 // .map's properies allow item then index?
 
 
@@ -69,4 +89,4 @@ ReactDOM.render(
   document.getElementById('root')
 )
 
-export default List
+// export default List
