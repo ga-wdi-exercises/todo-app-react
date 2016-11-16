@@ -8,7 +8,10 @@ var router = express.Router()
 
 var port = process.env.API_PORT || 7001
 
-mongoose.connect('mongodb://heroku_ndjw9w14:tu92sp9o9md9qc022pfh3jln70@ds155727.mlab.com:55727/heroku_ndjw9w14')
+// mongoose.connect('mongodb://heroku_ndjw9w14:tu92sp9o9md9qc022pfh3jln70@ds155727.mlab.com:55727/heroku_ndjw9w14')
+// mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect('mongodb://localhost/todo-app-react')
+
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
@@ -20,6 +23,10 @@ app.use(function(req, res, next) {
   res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers')
   res.setHeader('Cache-Control', 'no-cache')
   next()
+})
+
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/build/index.html')
 })
 
 router.get('/', (req, res) => {
