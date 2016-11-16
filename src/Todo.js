@@ -4,38 +4,42 @@ class Todo extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      taskName: '',
-      taskDescription: '',
+      name: '',
+      description: '',
       hasSubmitted: false,
-      tasks: [
-        {taskName: 'Cras', taskDescription: 'justo odio', isComplete: false},
-        {taskName: 'Dapibus', taskDescription: 'ac facilisis in', isComplete: false},
-        {taskName: 'Morbi', taskDescription: 'leo risus', isComplete: false},
-        {taskName: 'Porta', taskDescription: 'ac consectetur ac', isComplete: false},
-        {taskName: 'Vestibulum', taskDescription: 'at eros', isComplete: false},
-      ],
+      tasks: {
+        open: [
+          {name: 'Cras', description: 'justo odio'},
+          {name: 'Dapibus', description: 'ac facilisis in'},
+          {name: 'Morbi', description: 'leo risus'},
+          {name: 'Porta', description: 'ac consectetur ac'},
+          {name: 'Vestibulum', description: 'at eros'},
+        ],
+        completed: [],
+      },
     }
   }
 
   onNameInput(e) {
-    console.log(e.target.value)
     this.setState({
-      taskName: e.target.value,
+      name: e.target.value,
     })
   }
 
   onDescriptionInput(e) {
-    console.log(e.target.value)
     this.setState({
-      taskDescription: e.target.value,
+      description: e.target.value,
     })
   }
 
   onSubmit(e) {
     e.preventDefault()
-    let newTasks = this.state.tasks.slice()
-    newTasks.push({taskName: this.state.taskName, taskDescription: this.state.taskDescription, isComplete: false})
-    console.log({newTasks})
+    let newOpenTasks = this.state.tasks.open.slice()
+    newOpenTasks.push({name: this.state.name, description: this.state.description})
+    let newTasks = {
+      open: newOpenTasks,
+      completed: this.state.tasks.completed.slice()
+    }
     this.setState({
       hasSubmitted: true,
       tasks: newTasks,
@@ -43,15 +47,43 @@ class Todo extends Component {
     console.log(this.state.tasks)
   }
 
+  onTaskClick(e, i, state) {
+    let newOpenTasks = this.state.tasks.open.slice()
+    let newCompletedTasks = this.state.tasks.completed.slice()
+    if (state === "complete") {
+      console.log("Already complete!")
+    } else if (state === "open") {
+      newCompletedTasks.unshift(newOpenTasks[i])
+      newOpenTasks.splice(i, 1)
+      this.setState({
+        tasks: {
+          open: newOpenTasks,
+          completed: newCompletedTasks,
+        }
+      })
+    }
+  }
+
+  renderTask(item, i, state) {
+    return (
+      <button onClick={e => this.onTaskClick(e, i, state)}
+        key={i}
+        type="button"
+        className="list-group-item"
+        title="Click to Complete">
+        <strong>{item.name}</strong> {item.description}
+      </button>
+    )
+  }
+
   render() {
-    var openTasks = []
-    var completedTasks = []
-    this.state.tasks.map( (task, i) => {
-      if (task.isComplete) {
-        completedTasks.push(<button key={i} type="button" className="list-group-item" title="Click to Complete"><strong>{task.taskName}</strong> {task.taskDescription}</button>)
-      } else {
-        openTasks.push(<button key={i} type="button" className="list-group-item" title="Click to Complete"><strong>{task.taskName}</strong> {task.taskDescription}</button>)
-      }
+
+    let openTasks = this.state.tasks.open.map( (item, i) => {
+      return this.renderTask(item, i, "open")
+    })
+
+    let completedTasks = this.state.tasks.completed.map( (item, i) => {
+      return this.renderTask(item, i, "completed")
     })
 
     return(
