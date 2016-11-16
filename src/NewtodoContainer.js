@@ -6,7 +6,7 @@ class NewtodoContainer extends Component {
     super(props)
     this.state = {
       newtodo: '',
-      items: []
+      items: ["hello"]
     }
 
   }
@@ -19,20 +19,26 @@ class NewtodoContainer extends Component {
 
   handleSubmit(e){
     e.preventDefault(e)
-    console.log(this.state.newtodo)
-
-    // call this.setState and add the newTodo  to this.state.items
+    let todos = this.state.items.concat(this.state.newtodo)
+    this.setState({
+      items: todos
+    })
   }
 //
   render(){
+    let todos = this.state.items.map((todo, i) => {
+      return <li key={i}> {todo}</li>
+    })
     return(
-      <NewToDo
-        newtodo={this.state.newtodo}
-        onhandleSubmit={e => this.handleSubmit(e)}
-        onhandlenewtodo={e => this.handlenewtodo(e)}
-        />
+      <div>
+        <NewToDo
+          newtodo={this.state.newtodo}
+          onhandleSubmit={e => this.handleSubmit(e)}
+          onhandlenewtodo={e => this.handlenewtodo(e)}
+          />
+          <ul>{todos}</ul>
 
-
+        </div>
     )
   }
 }

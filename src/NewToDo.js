@@ -1,28 +1,6 @@
 import React, {Component} from 'react';
 
 class NewToDo extends Component {
-  // constructor(props){
-  //   super(props)
-  //   this.state = {
-  //     newtodo: '',
-  //     items: []
-  //   }
-  //
-  // }
-  //
-  // handlenewtodo(e){
-  //   this.setState({
-  //     newtodo: e.target.value
-  //   })
-  // }
-  //
-  // handleSubmit(e){
-  //   e.preventDefault(e)
-  //   console.log(this.state.newtodo)
-  //
-  //   // call this.setState and add the newTodo  to this.state.items
-  // }
-
   render() {
     return(
       <div>
