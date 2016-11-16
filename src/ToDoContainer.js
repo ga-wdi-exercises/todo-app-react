@@ -14,11 +14,11 @@ class ToDoContainer extends Component {
 
     return (
       <div className="todo-container">
-        {this.props.todos.map( todo => {
+        {this.props.todos.map( (todo, i) => {
           return <ToDo
             task={todo.task}
             completed={todo.completed}
-            key={todo.id}
+            key={i}
           />
         })}
       </div>
