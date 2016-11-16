@@ -5,6 +5,7 @@ class Item extends Component {
     return (
       <div>
         <p>{this.props.body}</p>
+        <p></p>
       </div>
       )
     }

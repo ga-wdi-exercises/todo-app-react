@@ -12,6 +12,7 @@ class App extends Component {
   }
 
   handleSubmit(e){
+    e.preventDefault()
     let oldItems = this.state.items.concat([this.state.newTodo])
     this.setState({
       items: oldItems
@@ -25,9 +26,21 @@ class App extends Component {
     })
   }
 
+  handleEdit(e, i){
+    console.log("Harambe");
+    console.log(this.state.items[i]);
+    this.setState({
+      //items = updated array
+    });
+  }
+
   render() {
     let items = this.state.items.map((item, i) => {
-      return <Item body={item} key={i} />
+      return(
+        <div>
+          <Item body={item} key={i} /><button onClick={e => this.handleEdit(e, i)}>Edit</button>
+        </div>
+      )
     })
     return (
       <div>
