@@ -1,14 +1,13 @@
 // Developer TODO: add application entry point
 import React, { Component } from 'react'
+import TodosContainer from './TodosContainer.js'
 import ReactDOM from 'react-dom'
 import Todos from "./Todos.js"
 
-const incompleted = [
-  {name: "Laundry", content: "Throw some clothes into the washer." },
-  {name: "Dishes", content: "Wash the dishes"}
-]
+
 
 ReactDOM.render(
-  <Todos incompleted={incompleted}/>,
+  <TodosContainer />,
+
   document.getElementById("root")
 )
