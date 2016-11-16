@@ -46,15 +46,18 @@ class TodoContainer extends Component {
   }
 
   onTaskClick(e, i, state) {
+
     let newOpenTasks = this.state.tasks.open.slice()
     let newCompletedTasks = this.state.tasks.completed.slice()
-    if (state === "complete") {
+
+    if (state === "completed") {
       newOpenTasks.unshift(newCompletedTasks[i])
       newCompletedTasks.splice(i, 1)
     } else if (state === "open") {
       newCompletedTasks.unshift(newOpenTasks[i])
       newOpenTasks.splice(i, 1)
     }
+
     this.setState({
       tasks: {
         open: newOpenTasks,
