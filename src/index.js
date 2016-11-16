@@ -1,9 +1,14 @@
 // Developer TODO: add application entry point
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ToDo from './App';
+import ToDo from './ToDo';
 
+const todo = {
+   name: "gary",
+   body: "buy more fiji",
+   }
 ReactDOM.render(
-  <ToDo />,
+  <ToDo
+  />,
   document.getElementById('root')
 );
