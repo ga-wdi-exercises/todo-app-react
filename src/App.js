@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import CreateTodo from './create-todo'
 import TodosList from './todos-list'
+require ('./styles/index.css')
 
 const todos = [
   {
