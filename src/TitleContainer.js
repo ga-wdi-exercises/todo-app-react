@@ -6,7 +6,7 @@ class TitleContainer extends Component {
       <div className="titleContainer">
         <div className="row">
           <div className="title" onClick={this.props.onBodyToggle}>{this.props.title}</div>
-          <img src="../burger.png"/>
+          <img className="menuButton" src="../burger.png" alt="menu button"/>
         </div>
         {/* TODO: add filter container here */}
       </div>

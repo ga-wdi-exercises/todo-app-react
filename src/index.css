@@ -13,3 +13,8 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.menuButton {
+  height: 15px;
+  width: 15px;
+}
