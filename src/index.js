@@ -3,6 +3,6 @@ import ReactDOM from 'react-dom';
 import ToDo from './App.js'
 
 ReactDOM.render(
-  <ToDo item={"code"}/>,
+  <ToDo items={["code","laundry"]}/>,
     document.getElementById('root')
 )
