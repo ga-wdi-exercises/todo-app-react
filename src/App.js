@@ -5,23 +5,34 @@ class ToDo extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      body: props.body
+      items:[ "code", "laundry" ],
+      newTodo: ''
     }
   }
-  handleClick(e) {
+
+  handleChange(e){
     this.setState({
-      body: prompt("What do you want to update?")
+      newTodo: event.target.value
     })
   }
+
+  handleSubmit(e){
+    event.preventDefault()
+  }
+
   render() {
-    let items = this.props.items.map((item, i) => {
+    let items = this.state.items.map((item, i) => {
       return <Item body={item} key={i} />
     })
       return (
         <div>
         <h1>To Do list</h1>
-        <button onClick={(e) => this.handleClick(e)}>Update</button>
         {items}
+        <form onSubmit={e => this.handleSubmit(e)}>
+        New Item:
+        <input type="text" placeholder="New Todo Item" value={this.state.newTodo} onChange={this.handleChange} />
+        <input type="submit" value="submit" />
+        </form>
         </div>
       )
     }
