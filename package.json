@@ -16,5 +16,6 @@
   },
   "eslintConfig": {
     "extends": "./node_modules/react-scripts/config/eslint.js"
-  }
+  },
+   "homepage": "https://merubin.github.io/todo-app-react/"
 }
