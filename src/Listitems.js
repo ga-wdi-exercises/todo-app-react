@@ -14,6 +14,9 @@ class ListItems extends Component {
       <div>
         <p>{this.props.body}
           <button onClick={(e) => this.props.onhandleClick(e,this.props.index)}> Delete {this.props.index} To do </button>
+          <button onClick={(e) => this.props.onhandleClickEdit(e,this.props.index)}>Edit {this.props.index} To do </button>
+          <button onClick={(e) => this.props.onhandleClickComplete(e,this.props.index)}> Complete{this.props.index} To do </button>
+
           </p>
       </div>
     )
