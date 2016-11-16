@@ -8,6 +8,5 @@ import Todos from "./Todos.js"
 
 ReactDOM.render(
   <TodosContainer />,
-
   document.getElementById("root")
 )

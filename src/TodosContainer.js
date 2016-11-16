@@ -7,12 +7,31 @@ const incompleted = [
   {name: "Dishes", content: "Wash the dishes"}
 ]
 class TodosContainer extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      list: this.props.incompleted
+    }
+  }
+  handleSubmit(e){
+    let newName = document.getElementById("name").value
+    let newContent = document.getElementById("content").value
+    e.preventDefault()
+    console.log(incompleted)
+    incompleted.push({name: newName, content: newContent})
+    this.setState({
+      list: incompleted
+    })
+  }
+
   render(){
     return(
       <div>
       <h1> Todo List </h1>
         <Todos incompleted={incompleted}/>
-        <NewTodo />
+        <NewTodo
+        addSubmit={e => this.handleSubmit(e)}
+         />
       </div>
     )
   }
