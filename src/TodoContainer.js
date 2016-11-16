@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
+import TodoForm from './TodoForm'
 
-class Todo extends Component {
+class TodoContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
       name: '',
       description: '',
-      hasSubmitted: false,
       tasks: {
         open: [
           {name: 'Cras', description: 'justo odio'},
@@ -41,27 +41,26 @@ class Todo extends Component {
       completed: this.state.tasks.completed.slice()
     }
     this.setState({
-      hasSubmitted: true,
       tasks: newTasks,
     })
-    console.log(this.state.tasks)
   }
 
   onTaskClick(e, i, state) {
     let newOpenTasks = this.state.tasks.open.slice()
     let newCompletedTasks = this.state.tasks.completed.slice()
     if (state === "complete") {
-      console.log("Already complete!")
+      newOpenTasks.unshift(newCompletedTasks[i])
+      newCompletedTasks.splice(i, 1)
     } else if (state === "open") {
       newCompletedTasks.unshift(newOpenTasks[i])
       newOpenTasks.splice(i, 1)
-      this.setState({
-        tasks: {
-          open: newOpenTasks,
-          completed: newCompletedTasks,
-        }
-      })
     }
+    this.setState({
+      tasks: {
+        open: newOpenTasks,
+        completed: newCompletedTasks,
+      }
+    })
   }
 
   renderTask(item, i, state) {
@@ -88,21 +87,13 @@ class Todo extends Component {
 
     return(
       <div className="container">
-        <section className="jumbotron">
-          <h1>Task Manager</h1>
-          <form className="form-inline" onSubmit={e => this.onSubmit(e)}>
-            <div className="form-group">
-              <label className="sr-only" htmlFor="task_name">Task Name</label>
-              <input type="text" className="form-control input-lg" id="task_name" placeholder="Task Name" onChange={e => this.onNameInput(e)} />
-            </div>
-            <div className="form-group">
-              <label className="sr-only" htmlFor="task_desc">Task Description</label>
-              <input type="text" className="form-control input-lg" id="task_desc" placeholder="Task Description" onChange={e => this.onDescriptionInput(e)} />
-            </div>
-
-            <button type="submit" className="btn btn-info btn-lg">Save</button>
-          </form>
-        </section>
+        <TodoForm
+          onNameInput={e => this.onNameInput(e)}
+          onDescriptionInput={e => this.onDescriptionInput(e)}
+          onSubmit={e => this.onSubmit(e)}
+          name={this.state.name}
+          desciption={this.state.description}
+        />
 
         <section className="row">
           <article className="col-md-6">
@@ -125,4 +116,4 @@ class Todo extends Component {
   }
 }
 
-export default Todo
+export default TodoContainer

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Todo from './Todo'
+import TodoContainer from './TodoContainer'
 
 class App extends Component {
   render() {
@@ -14,7 +14,7 @@ class App extends Component {
           </nav>
         </header>
 
-        <Todo />
+        <TodoContainer />
 
         <footer>
           <div className="footer-copyright">
