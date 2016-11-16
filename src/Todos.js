@@ -22,7 +22,8 @@ class Todos extends Component {
     console.log("Click Event ==> for Index value ",index)
     console.log(this.state.toDoItems)
     let newArray=this.state.toDoItems
-    newArray=newArray.splice(index,1)
+    newArray.splice(index,1)
+    console.log(newArray)
     this.setState({  toDoItems: newArray
 
     })
