@@ -1,5 +1,6 @@
 {
   "name": "todo-app-react",
+  "homepage": "http://bcope.github.io/todo-app-react"
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
