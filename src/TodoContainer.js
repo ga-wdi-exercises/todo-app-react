@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import TodoForm from './TodoForm'
+import TodoList from './TodoList'
 
 class TodoContainer extends Component {
   constructor(props) {
@@ -97,23 +98,10 @@ class TodoContainer extends Component {
           name={this.state.name}
           desciption={this.state.description}
         />
-
-        <section className="row">
-          <article className="col-md-6">
-            <h3>Open Items</h3>
-            <div className="list-group">
-              {openTasks}
-            </div>
-          </article>
-
-          <article className="col-md-6">
-            <h3>Completed Items</h3>
-            <div className="list-group">
-              {completedTasks}
-            </div>
-          </article>
-        </section>
-
+        <TodoList
+          openTasks={openTasks}
+          completedTasks={completedTasks}
+        />
       </div>
     )
   }
