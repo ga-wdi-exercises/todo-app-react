@@ -12,10 +12,16 @@ class ToDoContainer extends Component {
 
   render() {
 
-    // gather all To Dos
-
     return (
-      <ToDo />
+      <div className="todo-container">
+        {this.props.todos.map( todo => {
+          return <ToDo
+            task={todo.task}
+            completed={todo.completed}
+            key={todo.id}
+          />
+        })}
+      </div>
     )
 
   }

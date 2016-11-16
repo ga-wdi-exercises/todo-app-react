@@ -8,11 +8,38 @@ class App extends Component {
     this.state = {
       todos: [
         {
+          id: 0,
+          task: "Do laundry",
+          completed: true,
+        },
+        {
+          id: 1,
           task: "Make a To Do app in React",
+          completed: false,
+        },
+        {
+          id: 2,
+          task: "Make my portfolio site",
           completed: false,
         }
       ]
     }
+  }
+
+  handleToDoSubmit(e) {
+    e.preventDefault()
+    let newToDo = {
+      task: e.target.firstChild.value,
+      completed: false,
+
+      // not a great way to handle IDs I bet. Should I generate a random hash instead?
+      id: this.state.todos.length
+    }
+
+    let updatedList = this.state.todos.concat(newToDo)
+    this.setState({todos: updatedList})
+
+    e.target.firstChild.value = ""
   }
 
 
@@ -20,8 +47,10 @@ class App extends Component {
     return (
       <div>
         <h1>DO IT!</h1>
-        <Input />
-        <ToDoContainer />
+        <Input
+          onToDoSubmit={e => this.handleToDoSubmit(e)}
+        />
+        <ToDoContainer todos={this.state.todos} />
       </div>
     )
   }

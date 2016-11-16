@@ -4,7 +4,7 @@ class Input extends Component {
 
   render() {
     return (
-      <form>
+      <form onSubmit={e => this.props.onToDoSubmit(e)}>
         <input type="text" placeholder="add a to-do here"></input>
       </form>
     )
