@@ -6,7 +6,7 @@ var Todo = require('./model/todo')
 var app = express()
 var router = express.Router()
 
-var port = process.env.API_PORT || 7001
+var port = process.env.PORT || 7001
 
 // mongoose.connect('mongodb://heroku_ndjw9w14:tu92sp9o9md9qc022pfh3jln70@ds155727.mlab.com:55727/heroku_ndjw9w14')
 mongoose.connect(process.env.MONGODB_URI)
