@@ -20,8 +20,11 @@ class Todos extends Component {
 
   handleClick(event, index){
     console.log("Click Event ==> for Index value ",index)
-    let newArray=this.state.toDoItems.splice(index,1)
+    console.log(this.state.toDoItems)
+    let newArray=this.state.toDoItems
+    newArray=newArray.splice(index,1)
     this.setState({  toDoItems: newArray
+
     })
   }
 
@@ -36,10 +39,9 @@ class Todos extends Component {
 
   render(){
 
-
-
-    let listItems = this.props.listItems.map( (item, index) => {
-      return <ListItems body={item} index={index} key={index} />
+    let listItems = this.state.toDoItems.map( (item, index) => {
+      return <ListItems body={item} index={index} key={index}
+      onhandleClick={ (e,index) => this.handleClick(e,index)} />
     })
 
     return (
@@ -49,9 +51,8 @@ class Todos extends Component {
       <input type="text"  placeholder="New Todo Entry" value={this.state.newTodo} onChange={ (e) => this.handleChangeTodo(e)} />
       <input type="submit" value="Add Todo" />
       </form>
-      <listItems
-        onhandleClick={ (e,index) => this.handleClick(e,index)}
-      />
+      {listItems}
+
       </div>
     );
 
