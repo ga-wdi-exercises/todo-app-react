@@ -1,13 +1,16 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
+import TodosList from './ToDosList';
 
-class ToDo extends Component {
+class Todo extends Component {
 
-  render () {
 
-    return (
-      <h1>ToDos!</h1>
+  render() {
+    return(
+      <div>
+      <h1>React Todos App</h1>
+      <TodosList />
+      </div>
     )
   }
 }
-
-export default ToDo
+export default Todo

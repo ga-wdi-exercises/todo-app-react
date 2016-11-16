@@ -1,8 +1,13 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import ToDo from './App.js'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Todo from './App';
+import './index.css';
 
+const todo = {
+  task: "Wash the car"
+}
 ReactDOM.render(
-  <ToDo />,
+  <Todo
+    task={todo.task} />,
   document.getElementById('root')
 )
