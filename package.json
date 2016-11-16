@@ -6,6 +6,7 @@
     "react-scripts": "0.2.1"
   },
   "dependencies": {
+    "lodash": "^4.17.2",
     "react": "^15.2.1",
     "react-dom": "^15.2.1"
   },
@@ -16,5 +17,18 @@
   },
   "eslintConfig": {
     "extends": "./node_modules/react-scripts/config/eslint.js"
-  }
+  },
+  "description": "Today's objective is to apply the fundamentals of what we learned so far by building a Todo app in React.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marlungu/todo-app-react.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marlungu/todo-app-react/issues"
+  },
+  "homepage": "https://github.com/marlungu/todo-app-react#readme"
 }
