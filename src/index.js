@@ -4,11 +4,17 @@ import ReactDOM from 'react-dom';
 import ToDo from './ToDo';
 
 const todo = {
-   name: "gary",
-   body: "buy more fiji",
-   }
+
+   currentTask: [
+     "buy more fiji",
+     "whoop the caps ass",
+     "get milk"
+  ]
+ }
 ReactDOM.render(
   <ToDo
+
+  currentTasks={todo.currentTasks}
   />,
   document.getElementById('root')
 );
