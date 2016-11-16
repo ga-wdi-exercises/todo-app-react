@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import TodoForm from './TodoForm'
 import TodoList from './TodoList'
-import {queryDb} from './Utils'
+import { queryDb } from './Utils'
 
 class TodoContainer extends Component {
   constructor(props) {
