@@ -4,6 +4,6 @@ import ReactDOM from 'react-dom'
 import App from './App'
 
 ReactDOM.render(
-  <App/>,
+  <App todos={todo} />,
   document.getElementById('root')
 )

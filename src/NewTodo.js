@@ -6,35 +6,24 @@ class NewTodo extends Component {
     super()
     this.state = props
   }
+  render(){
+    return(
+      <Todo
+       onSubmit={ e => this.create(e) }
+       onChange={ e => this.change(e) }
+  
+    />
+  )
+  }
   change(e){
     this.setState({
-      newTodo:e.target.value
+      newTodo: e.target.value
     })
   }
   create(e){
     e.preventDefault()
     this.props.onCreate(this.state.newTodo)
-    this.setState({NewTodo: ''})
-  }
-
-  addTodo(text){
-    let todos = this.state.todos
-    todos.push(text)
-    this.setState({todos})
-  }
-  delete(index){
-    let todos = this.state.todos
-    todos.splice(index, 1)
-    this.setState({todos})
-    console.log(this.state)
-  }
-
-  render(){
-    return(
-      <form onSubmit={ e => this.create(e) }>
-        <input type='text' value={this.state.newTodo} onChange={ e => this.change(e) } />
-      </form>
-    )
+    this.setState({newTodo: ''})
   }
 }
 
