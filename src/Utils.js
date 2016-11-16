@@ -2,7 +2,7 @@ import $ from 'jquery'
 
 export function queryDb(method, data) {
   // var url = "http://localhost:7001/api/todos"
-  var url = "http://wdi-react-todo.herokuapp.com/api/todos"
+  var url = "https://wdi-react-todo.herokuapp.com/api/todos"
 
   if (method === 'get') {
     return $.getJSON(url).then(res => {
