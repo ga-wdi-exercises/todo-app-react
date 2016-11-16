@@ -2,5 +2,25 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color: blue;
+  background: url("paper.jpg")
+}
+
+div {
+  font-size: 45px;
+}
+
+h1 {
+  text-align: center;
+}
+
+table {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+form {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }

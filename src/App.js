@@ -26,7 +26,7 @@ class App extends Component {
   render() {
     return (
     <div>
-      <h1>React ToDos App Baaaaabbbyyy</h1>
+      <h1>Honey Do List!!!</h1>
       <CreateTodo todos={this.state.todos} createTask={this.createTask.bind(this)}/>
       <TodosList
           todos={this.state.todos}
