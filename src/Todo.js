@@ -7,24 +7,53 @@ class Todo extends Component {
       taskName: '',
       taskDescription: '',
       hasSubmitted: false,
-      tasks: [],
+      tasks: [
+        {taskName: 'Cras', taskDescription: 'justo odio', isComplete: false},
+        {taskName: 'Dapibus', taskDescription: 'ac facilisis in', isComplete: false},
+        {taskName: 'Morbi', taskDescription: 'leo risus', isComplete: false},
+        {taskName: 'Porta', taskDescription: 'ac consectetur ac', isComplete: false},
+        {taskName: 'Vestibulum', taskDescription: 'at eros', isComplete: false},
+      ],
     }
   }
 
   onNameInput(e) {
-    console.log('name')
+    console.log(e.target.value)
+    this.setState({
+      taskName: e.target.value,
+    })
   }
 
   onDescriptionInput(e) {
-    console.log('task')
+    console.log(e.target.value)
+    this.setState({
+      taskDescription: e.target.value,
+    })
   }
 
   onSubmit(e) {
     e.preventDefault()
-    console.log('click!')
+    let newTasks = this.state.tasks.slice()
+    newTasks.push({taskName: this.state.taskName, taskDescription: this.state.taskDescription, isComplete: false})
+    console.log({newTasks})
+    this.setState({
+      hasSubmitted: true,
+      tasks: newTasks,
+    })
+    console.log(this.state.tasks)
   }
 
   render() {
+    var openTasks = []
+    var completedTasks = []
+    this.state.tasks.map( (task, i) => {
+      if (task.isComplete) {
+        completedTasks.push(<button key={i} type="button" className="list-group-item" title="Click to Complete"><strong>{task.taskName}</strong> {task.taskDescription}</button>)
+      } else {
+        openTasks.push(<button key={i} type="button" className="list-group-item" title="Click to Complete"><strong>{task.taskName}</strong> {task.taskDescription}</button>)
+      }
+    })
+
     return(
       <div className="container">
         <section className="jumbotron">
@@ -47,22 +76,14 @@ class Todo extends Component {
           <article className="col-md-6">
             <h3>Open Items</h3>
             <div className="list-group">
-              <button type="button" className="list-group-item" title="Click to Complete"><strong>Cras</strong> justo odio</button>
-              <button type="button" className="list-group-item" title="Click to Complete"><strong>Dapibus</strong> ac facilisis in</button>
-              <button type="button" className="list-group-item" title="Click to Complete"><strong>Morbi</strong> leo risus</button>
-              <button type="button" className="list-group-item" title="Click to Complete"><strong>Porta</strong> ac consectetur ac</button>
-              <button type="button" className="list-group-item" title="Click to Complete"><strong>Vestibulum</strong> at eros</button>
+              {openTasks}
             </div>
           </article>
 
           <article className="col-md-6">
             <h3>Completed Items</h3>
             <div className="list-group">
-              <button type="button" className="list-group-item" title="Click to Reopen"><strong>Cras</strong> justo odio<a className="pull-right" title="Click to Delete"><span className="glyphicon glyphicon-remove" aria-hidden="true"></span></a></button>
-              <button type="button" className="list-group-item" title="Click to Reopen"><strong>Dapibus</strong> ac facilisis in<a className="pull-right" title="Click to Delete"><span className="glyphicon glyphicon-remove" aria-hidden="true"></span></a></button>
-              <button type="button" className="list-group-item" title="Click to Reopen"><strong>Morbi</strong> leo risus<a className="pull-right" title="Click to Delete"><span className="glyphicon glyphicon-remove" aria-hidden="true"></span></a></button>
-              <button type="button" className="list-group-item" title="Click to Reopen"><strong>Porta</strong> ac consectetur ac<a className="pull-right" title="Click to Delete"><span className="glyphicon glyphicon-remove" aria-hidden="true"></span></a></button>
-              <button type="button" className="list-group-item" title="Click to Reopen"><strong>Vestibulum</strong> at eros<a className="pull-right" title="Click to Delete"><span className="glyphicon glyphicon-remove" aria-hidden="true"></span></a></button>
+              {completedTasks}
             </div>
           </article>
         </section>
