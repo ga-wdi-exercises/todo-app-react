@@ -4,7 +4,6 @@ class TodoForm extends Component{
   render(){
     return(
       <div>
-        <h1>Add Todo</h1>
         <form onSubmit={ e => this.props.onTodoSubmit(e) }>
           <input
             type="text"

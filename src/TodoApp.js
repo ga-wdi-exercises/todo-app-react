@@ -4,7 +4,10 @@ import TodoContainer from "./TodoContainer"
 class TodoApp extends Component{
   render(){
     return(
-      <TodoContainer />
+      <div>
+        <h1>Todos Bruh</h1>
+        <TodoContainer />
+      </div>
     )
   }
 }
