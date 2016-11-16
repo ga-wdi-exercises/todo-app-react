@@ -1,20 +1,42 @@
 import React, { Component } from 'react'
 
 class Todo extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      taskName: '',
+      taskDescription: '',
+      hasSubmitted: false,
+      tasks: [],
+    }
+  }
+
+  onNameInput(e) {
+    console.log('name')
+  }
+
+  onDescriptionInput(e) {
+    console.log('task')
+  }
+
+  onSubmit(e) {
+    e.preventDefault()
+    console.log('click!')
+  }
 
   render() {
     return(
       <div className="container">
         <section className="jumbotron">
           <h1>Task Manager</h1>
-          <form className="form-inline">
+          <form className="form-inline" onSubmit={e => this.onSubmit(e)}>
             <div className="form-group">
               <label className="sr-only" htmlFor="task_name">Task Name</label>
-              <input type="text" className="form-control input-lg" id="task_name" placeholder="Task Name" />
+              <input type="text" className="form-control input-lg" id="task_name" placeholder="Task Name" onChange={e => this.onNameInput(e)} />
             </div>
             <div className="form-group">
               <label className="sr-only" htmlFor="task_desc">Task Description</label>
-              <input type="text" className="form-control input-lg" id="task_desc" placeholder="Task Description" />
+              <input type="text" className="form-control input-lg" id="task_desc" placeholder="Task Description" onChange={e => this.onDescriptionInput(e)} />
             </div>
 
             <button type="submit" className="btn btn-info btn-lg">Save</button>
