@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import TodoForm from './TodoForm'
 import TodoList from './TodoList'
+import {queryDb} from './Utils'
 
 class TodoContainer extends Component {
   constructor(props) {
@@ -9,16 +10,27 @@ class TodoContainer extends Component {
       name: '',
       description: '',
       tasks: {
-        open: [
-          {name: 'Cras', description: 'justo odio'},
-          {name: 'Dapibus', description: 'ac facilisis in'},
-          {name: 'Morbi', description: 'leo risus'},
-          {name: 'Porta', description: 'ac consectetur ac'},
-          {name: 'Vestibulum', description: 'at eros'},
-        ],
+        open: [],
         completed: [],
       },
     }
+  }
+
+  componentWillMount(){
+    let newOpenTasks = this.state.tasks.open.slice()
+    let newCompletedTasks = this.state.tasks.completed.slice()
+
+    queryDb('get').then(data => {
+      data.forEach( i => {
+        newOpenTasks.push(i)
+      })
+      this.setState({
+        tasks: {
+          open: newOpenTasks,
+          completed: newCompletedTasks,
+        }
+      })
+    })
   }
 
   onNameInput(e) {
@@ -35,14 +47,24 @@ class TodoContainer extends Component {
 
   onSubmit(e) {
     e.preventDefault()
-    let newOpenTasks = this.state.tasks.open.slice()
-    newOpenTasks.push({name: this.state.name, description: this.state.description})
-    let newTasks = {
-      open: newOpenTasks,
-      completed: this.state.tasks.completed.slice()
+
+    let newTask = {
+      name: this.state.name,
+      description: this.state.description,
+      isComplete: false,
     }
-    this.setState({
-      tasks: newTasks,
+
+    queryDb('post', newTask).then( (res) => {
+      let newOpenTasks = this.state.tasks.open.slice()
+      newOpenTasks.push(newTask)
+
+      let newTasks = {
+        open: newOpenTasks,
+        completed: this.state.tasks.completed.slice()
+      }
+      this.setState({
+        tasks: newTasks,
+      })
     })
   }
 
