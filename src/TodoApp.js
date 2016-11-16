@@ -1,10 +1,10 @@
 import React, {Component} from "react"
-import AddTodo from "./AddTodo"
+import AddTodoContainer from "./AddTodoContainer"
 
 class TodoApp extends Component{
   render(){
     return(
-      <AddTodo />
+      <AddTodoContainer />
     )
   }
 }

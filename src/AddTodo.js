@@ -4,8 +4,8 @@ class AddTodo extends Component{
   render(){
     return(
       <div>
-        <h1>Todo Manager</h1>
-        <form onSubmit={ e => this.props.onSubmit(e) }>
+        <h1>Add Todo</h1>
+        <form onSubmit={ e => this.props.onTodoSubmit(e) }>
           <input
             type="text"
             value={this.props.todoName}
@@ -16,7 +16,7 @@ class AddTodo extends Component{
             value={this.props.todoDesc}
             onChange={ e => this.props.onTodoDescInput(e) }
             placeholder="Enter Description..."/>
-          <input type="submit" />
+          <input type="submit" value="Submit"/>
         </form>
       </div>
     )
