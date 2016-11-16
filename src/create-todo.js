@@ -13,7 +13,7 @@ class CreateTodo extends Component {
   handleCreate(event) {
     event.preventDefault()
 
-    console.log(this.refs.createInput.value)
+    this.props.createTask(this.refs.createInput.value)
   }
 }
 
