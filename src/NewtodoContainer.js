@@ -35,9 +35,15 @@ class NewtodoContainer extends Component {
 
   }
 //
+deleteToDo(e, i){
+  let selectedToDo = this.state.items[i]
+  let currentArray = this.state.items.splice(selectedToDo)
+  console.log(selectedToDo)
+}
   render(){
     let todos = this.state.items.map((todo, i) => {
-      return <li key={i}> {todo} <button onClick = {(e) => this.editToDo(e, i)}>Edit</button></li>
+      return <li key={i}> {todo} <button onClick = {(e) => this.editToDo(e, i)}>Edit</button>
+              <button onClick= {(e) => this.deleteToDo(e, i)}>Delete</button></li>
     })
     return(
       <div>
