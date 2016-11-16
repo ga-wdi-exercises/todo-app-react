@@ -8,10 +8,9 @@ var router = express.Router()
 
 var port = process.env.PORT || 7001
 
-// mongoose.connect('mongodb://heroku_ndjw9w14:tu92sp9o9md9qc022pfh3jln70@ds155727.mlab.com:55727/heroku_ndjw9w14')
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/todo-app-react')
 
-app.use(express.static('build/static'))
+app.use(express.static('build'))
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
