@@ -1,8 +1,8 @@
 import React, {Component} from "react"
-import AddTodo from "./AddTodo"
+import TodoForm from "./TodoForm"
 import TodoList from "./TodoList"
 
-class AddTodoContainer extends Component{
+class TodoContainer extends Component{
   constructor(props){
     super(props)
     this.state = {
@@ -25,10 +25,16 @@ class AddTodoContainer extends Component{
       todoDesc: e.target.value,
     })
   }
+  handleEditTodo(e){
+    console.log(this.state[i])
+    console.log("consequences...")
+  }
+  sendIndex(i){
+    console.log(i)
+  }
   handleAddSubmit(e){
     e.preventDefault()
     let newTodoArr = this.state.todoArr.concat({todo: this.state.todoName, desc: this.state.todoDesc})
-    console.log(this.state.todoArr)
 
     this.setState({
       todoArr: newTodoArr,
@@ -38,31 +44,33 @@ class AddTodoContainer extends Component{
     })
   }
   render(){
-    let addTodo = <AddTodo
-                todoName={this.state.todoName}
-                todoDesc={this.state.todoDesc}
-                todoArr={this.state.todoArr}
-                onTodoNameInput={ e => this.handleTodoNameInput(e)}
-                onTodoDescInput={ e => this.handleTodoDescInput(e)}
-                onTodoSubmit={ e => this.handleAddSubmit(e)}
+    let todoForm = <TodoForm
+                todoName          = {this.state.todoName}
+                todoDesc          = {this.state.todoDesc}
+                todoArr           = {this.state.todoArr}
+                onTodoNameInput   = { e => this.handleTodoNameInput(e)}
+                onTodoDescInput   = { e => this.handleTodoDescInput(e)}
+                onTodoSubmit      = { e => this.handleAddSubmit(e)}
               />
     if (this.state.hasClicked) {
       return(
         <div>
-          {addTodo}
+          {todoForm}
           <TodoList
-            todoArr={this.state.todoArr}
+            todoArr       = {this.state.todoArr}
+            onEditTodo    = { e => this.handleEditTodo(e)}
+            sendIndex     = { i => this.sendIndex(i)}
           />
         </div>
       )
     } else {
       return(
         <div>
-          {addTodo}
+          {todoForm}
         </div>
       )
     }
   }
 }
 
-export default AddTodoContainer
+export default TodoContainer

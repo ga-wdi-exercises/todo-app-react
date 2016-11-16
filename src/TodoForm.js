@@ -1,6 +1,6 @@
 import React, {Component} from "react"
 
-class AddTodo extends Component{
+class TodoForm extends Component{
   render(){
     return(
       <div>
@@ -23,4 +23,4 @@ class AddTodo extends Component{
   }
 }
 
-export default AddTodo
+export default TodoForm
