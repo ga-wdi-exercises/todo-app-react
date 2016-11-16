@@ -24,10 +24,20 @@ class NewtodoContainer extends Component {
       items: todos
     })
   }
+  editToDo(e, i){
+    let newTodo = prompt("What is the new to-do?")
+    console.log(this.state.items[i])
+    let currentArray = this.state.items
+    currentArray[i] =  newTodo
+    this.setState({
+      items: currentArray
+    })
+
+  }
 //
   render(){
     let todos = this.state.items.map((todo, i) => {
-      return <li key={i}> {todo}</li>
+      return <li key={i}> {todo} <button onClick = {(e) => this.editToDo(e, i)}>Edit</button></li>
     })
     return(
       <div>
