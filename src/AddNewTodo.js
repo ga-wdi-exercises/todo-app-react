@@ -5,7 +5,7 @@ class NewTodo extends Component {
     return(
       <form onSubmit={e => this.props.addSubmit(e)}>
         <input id="name" placeholder="Name" />
-        <input id="content" placeholder="Content"/>
+        <input id="content" placeholder="Content" />
         <input type="submit" />
       </form>
     )

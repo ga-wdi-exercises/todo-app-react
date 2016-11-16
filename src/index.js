@@ -4,9 +4,13 @@ import TodosContainer from './TodosContainer.js'
 import ReactDOM from 'react-dom'
 import Todos from "./Todos.js"
 
+const incompleted = [
+  {name: "Laundry", content: "Throw some clothes into the washer." },
+  {name: "Dishes", content: "Wash the dishes"}
+]
 
 
 ReactDOM.render(
-  <TodosContainer />,
+  <TodosContainer incompleted={incompleted} />,
   document.getElementById("root")
 )
