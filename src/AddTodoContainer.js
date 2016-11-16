@@ -8,8 +8,12 @@ class AddTodoContainer extends Component{
     this.state = {
       todoName: "",
       todoDesc: "",
+      todoArr: [],
       hasClicked: false,
     }
+    this.handleTodoNameInput = this.handleTodoNameInput.bind(this)
+    this.handleTodoDescInput = this.handleTodoDescInput.bind(this)
+    this.handleAddSubmit     = this.handleAddSubmit.bind(this)
   }
   handleTodoNameInput(e){
     this.setState({
@@ -22,17 +26,22 @@ class AddTodoContainer extends Component{
     })
   }
   handleAddSubmit(e){
+    e.preventDefault()
+    let newTodoArr = this.state.todoArr.concat({todo: this.state.todoName, desc: this.state.todoDesc})
+    console.log(this.state.todoArr)
+
     this.setState({
+      todoArr: newTodoArr,
       todoName: "",
       todoDesc: "",
       hasClicked: true,
     })
-    e.preventDefault()
   }
   render(){
     let addTodo = <AddTodo
                 todoName={this.state.todoName}
                 todoDesc={this.state.todoDesc}
+                todoArr={this.state.todoArr}
                 onTodoNameInput={ e => this.handleTodoNameInput(e)}
                 onTodoDescInput={ e => this.handleTodoDescInput(e)}
                 onTodoSubmit={ e => this.handleAddSubmit(e)}
@@ -41,7 +50,9 @@ class AddTodoContainer extends Component{
       return(
         <div>
           {addTodo}
-          <TodoList />
+          <TodoList
+            todoArr={this.state.todoArr}
+          />
         </div>
       )
     } else {
