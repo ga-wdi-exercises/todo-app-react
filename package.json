@@ -8,6 +8,7 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
+    "foreman": "^2.0.0",
     "jquery": "^3.1.1",
     "mongoose": "^4.6.8",
     "react": "^15.2.1",
@@ -15,7 +16,7 @@
   },
   "scripts": {
     "api": "nodemon server.js",
-    "start": "node server.js",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject"
   },
