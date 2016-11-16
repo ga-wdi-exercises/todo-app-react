@@ -12,7 +12,7 @@ class ToDo extends Component {
 
     <div>
     <h1> React To Do</h1>
-      <Task currentTask={this.props.currentTask}  />
+      <Task body={this.props.body}  />
     </div>
 
   )}
@@ -25,7 +25,7 @@ class Task extends Component {
     constructor(props) {
       super(props)
       this.state = {
-        currentTasks: props.currentTasks
+        body: props.body
       }
     }
       handleTaskInput(e) {
@@ -36,7 +36,7 @@ class Task extends Component {
 
       submitQuery(e){
         e.preventDefault();
-      {this.state.currentTasks}
+      {this.state.body}
       }
   render () {
 
@@ -53,7 +53,7 @@ class Task extends Component {
           <button type="submit">Add Task</button>
           </form>
           <div>
-          {this.props.currentTasks}
+          {this.props.body}
       </div>
       </div>
 

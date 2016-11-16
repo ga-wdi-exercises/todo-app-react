@@ -5,7 +5,7 @@ import ToDo from './ToDo';
 
 const todo = {
 
-   currentTask: [
+   body: [
      "buy more fiji",
      "whoop the caps ass",
      "get milk"
@@ -14,7 +14,7 @@ const todo = {
 ReactDOM.render(
   <ToDo
 
-  currentTasks={todo.currentTasks}
+  body={todo.body}
   />,
   document.getElementById('root')
 );
