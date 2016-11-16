@@ -2,16 +2,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App.js'
-import NewToDo from './NewToDo.js'
-
-const todo = {
-  items:["Go to gym", "finish portfolio"]
-}
+import NewtodoContainer from './NewtodoContainer.js'
 
 
 ReactDOM.render(
   <App
-  todos={[todo.items]}
   />,
   document.getElementById('root')
 )
