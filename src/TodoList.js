@@ -53,8 +53,12 @@ class TodoList extends Component {
   }
 
   removeTodo(e) {
+    console.log(typeof parseInt(e.target.value, 10), parseInt(e.target.value, 10))
+    let index = parseInt(e.target.value, 10)
     let newTodoSet = this.state.todos.slice()
-    newTodoSet.splice(e.target.value, 1)
+    console.log("before", newTodoSet);
+    newTodoSet.splice(index, 1)
+    console.log("after", newTodoSet);
     this.setState({
       todos: newTodoSet
     })
@@ -64,8 +68,7 @@ class TodoList extends Component {
     let todos = this.state.todos.map((todo, index) => {
       return(
         <Todo
-          title={ todo.title }
-          body={ todo.body }
+          todo={todo}
           completed={ todo.completed }
           key={index}
           index={index}

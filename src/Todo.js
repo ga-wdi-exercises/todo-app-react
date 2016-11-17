@@ -5,8 +5,6 @@ class Todo extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      title: this.props.title,
-      body: this.props.body,
       completed: this.props.completed
     }
   }
@@ -17,12 +15,14 @@ class Todo extends Component {
     })
   }
   render() {
+    let {title, body} = this.props.todo
+    console.log(title, body);
     if(this.state.completed) {
       return(
         <div className='todo'>
           <div>
-          <h3>{ this.state.title }</h3>
-          <p>{ this.state.body }</p>
+          <h3>{title }</h3>
+          <p>{body }</p>
           </div>
           <div>
             &#10003;
@@ -40,8 +40,8 @@ class Todo extends Component {
       return(
         <div className='todo'>
           <div>
-          <h3>{ this.state.title }</h3>
-          <p>{ this.state.body }</p>
+          <h3>{title }</h3>
+          <p>{body }</p>
           </div>
           <div>
             <button onClick={() => this.markComplete() }></button>
