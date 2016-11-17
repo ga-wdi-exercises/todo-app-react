@@ -27,10 +27,10 @@ class TodoContainer extends Component{
   }
   handleEditTodo(i){
       let editTodoAnswer = prompt("what do you want to change?")
-      let modArr = this.state.todoArr[i].todoName
-      modArr.editTodoAnswer
+      this.state.todoArr[i].todo = editTodoAnswer
+      console.log(this.state.todoArr)
       this.setState({
-        todoArr: modArr,
+        todoArr: this.state.todoArr,
       })
 
   }
