@@ -10,6 +10,12 @@ class Todo extends Component {
       completed: this.props.completed
     }
   }
+
+  markComplete() {
+    this.setState({
+      completed: true
+    })
+  }
   render() {
     if(this.state.completed) {
       return(
@@ -19,7 +25,7 @@ class Todo extends Component {
           <p>{ this.state.body }</p>
           </div>
           <div>
-            done!
+            &#10003;
           </div>
         </div>
       )
@@ -31,6 +37,7 @@ class Todo extends Component {
           <p>{ this.state.body }</p>
           </div>
           <div>
+            <button onClick={() => this.markComplete() }></button>
           </div>
         </div>
       )

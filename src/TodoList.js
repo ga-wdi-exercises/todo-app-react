@@ -44,7 +44,10 @@ class TodoList extends Component {
     let newTodoSet = this.state.todos.slice()
     newTodoSet.push(newTodo)
     this.setState({
-      todos: newTodoSet
+      todos: newTodoSet,
+      addTodo: false,
+      newTodoTitle: '',
+      newTodoBody: ''
     })
     console.log(newTodo)
   }
