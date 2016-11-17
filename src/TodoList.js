@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import Todos from './Todos'
+import Todo from './Todo'
+import AddTodoForm from './AddTodoForm'
 import seeds from './seeds.js'
 
 
@@ -8,14 +9,69 @@ class TodoList extends Component {
     super(props)
     this.state = {
       title: 'Todos',
-      todos: seeds
+      todos: seeds,
+      addTodo: false,
+      newTodoTitle: '',
+      newTodoBody: ''
     }
   }
+  toggleNewTodo(e) {
+    e.preventDefault()
+    this.setState({
+      addTodo: true
+    })
+  }
+  setNewTodoTitle(e) {
+    console.log(e.target.value)
+    this.setState({
+      newTodoTitle: e.target.value
+    })
+  }
+  setNewTodoBody(e) {
+    console.log(e.target.value)
+    this.setState({
+      newTodoBody: e.target.value
+    })
+  }
+
+  addNewTodo(e) {
+    e.preventDefault()
+    let newTodo={
+      title: this.state.newTodoTitle,
+      body: this.state.newTodoBody,
+      completed: false
+    }
+    let newTodoSet = this.state.todos.slice()
+    newTodoSet.push(newTodo)
+    this.setState({
+      todos: newTodoSet
+    })
+    console.log(newTodo)
+  }
+
   render() {
+    let todos = this.state.todos.map((todo, index) => {
+      return(
+        <Todo
+          title={ todo.title }
+          body={ todo.body }
+          completed={ todo.completed }
+          key={index}
+        />
+      )
+    })
     return(
       <div className='todo-list'>
         <h2>{ this.state.title }</h2>
-        <Todos todos={ this.state.todos }/>
+        { todos }
+        <AddTodoForm
+          addTodo={ this.state.addTodo }
+          newTodo={ this.state.newTodo }
+          toggleNewTodo={ (e) => this.toggleNewTodo(e) }
+          setNewTodoTitle={ (e) => this.setNewTodoTitle(e) }
+          setNewTodoBody={ (e) => this.setNewTodoBody(e) }
+          addNewTodo={ (e) => this.addNewTodo(e)}
+        />
       </div>
     )
   }
