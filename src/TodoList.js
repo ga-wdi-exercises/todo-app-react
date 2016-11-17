@@ -52,6 +52,14 @@ class TodoList extends Component {
     console.log(newTodo)
   }
 
+  removeTodo(e) {
+    let newTodoSet = this.state.todos.slice()
+    newTodoSet.splice(e.target.value, 1)
+    this.setState({
+      todos: newTodoSet
+    })
+  }
+
   render() {
     let todos = this.state.todos.map((todo, index) => {
       return(
@@ -60,6 +68,8 @@ class TodoList extends Component {
           body={ todo.body }
           completed={ todo.completed }
           key={index}
+          index={index}
+          removeTodo={ (e) => this.removeTodo(e)}
         />
       )
     })

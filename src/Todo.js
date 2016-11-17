@@ -27,6 +27,13 @@ class Todo extends Component {
           <div>
             &#10003;
           </div>
+          <div>
+            <button
+              value={this.props.index}
+              onClick={(e) => this.props.removeTodo(e)}>
+                Remove
+            </button>
+          </div>
         </div>
       )
     } else {
@@ -38,6 +45,13 @@ class Todo extends Component {
           </div>
           <div>
             <button onClick={() => this.markComplete() }></button>
+          </div>
+          <div>
+            <button
+              value={this.props.index}
+              onClick={(e) => this.props.removeTodo(e)}>
+                Remove
+            </button>
           </div>
         </div>
       )
