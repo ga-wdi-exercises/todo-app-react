@@ -1,5 +1,6 @@
 {
   "name": "todo-app-react",
+  "homepage": "http://awhitleyga.github.io/todo-app",
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
