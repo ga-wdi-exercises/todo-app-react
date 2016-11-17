@@ -1,0 +1,8 @@
+.todo {
+  margin-bottom: .5em;
+}
+
+.todo > a {
+  font-size: .7em;
+  padding-left: 10px;
+}
