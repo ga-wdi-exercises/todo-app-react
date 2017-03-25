@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Todo from './Todo.js'
 
 class App extends Component {
   constructor() {
@@ -11,12 +12,14 @@ class App extends Component {
       ]
     }
   }
+  
   render() {
+    let todos = this.state.todos.map((todo, index) => {
+      return <Todo content={todo} key={index} />
+    })
     return (
       <ul>
-        <li>{this.state.todos[0]}</li>
-        <li>{this.state.todos[1]}</li>
-        <li>{this.state.todos[2]}</li>
+        {todos}
       </ul>
     )
   }

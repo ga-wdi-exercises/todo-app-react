@@ -1,4 +1,3 @@
-* As a user, I should be able to see all my incomplete todos
 * As a user, I should be able to add a new todo to the list
 * As a user, I should be able to mark a todo as completed
 * As a user, I should able to edit a todo's content
