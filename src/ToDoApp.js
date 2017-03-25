@@ -1,5 +1,5 @@
-// bring in React and Component instance from react
 import React, {Component} from 'react'
+
 var ToDoApp = React.createClass({
   getInitialState: function(){
     return {items: []};
@@ -19,15 +19,3 @@ var ToDoApp = React.createClass({
     );
   }
 });
-// // define our Hello component
-// class Hello extends Component {
-//   // what should the component render
-//   render () {
-//     // Make sure to return some UI
-//     return (
-//       <h1>Hello World!</h1>
-//     )
-//   }
-// }
-//
-// export default Hello
