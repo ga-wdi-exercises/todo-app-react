@@ -1,4 +1,3 @@
-* As a user, I should be able to add a new todo to the list
 * As a user, I should be able to mark a todo as completed
 * As a user, I should able to edit a todo's content
 * As a user, I should be able to delete a todo
