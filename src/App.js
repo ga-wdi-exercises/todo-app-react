@@ -7,9 +7,13 @@ class App extends Component {
     this.state = {
       new: '',
       todos: [
-        'first todo',
-        'second todo',
-        'third todo'
+        'a',
+        'b',
+        'c',
+        'd',
+        'e',
+        'f',
+        'g'
       ]
     }
   }
@@ -20,7 +24,7 @@ class App extends Component {
     })
   }
 
-  createTodo(e) {
+  create(e) {
     e.preventDefault()
     this.setState({
       todos: this.state.todos.concat([this.state.new])
@@ -28,13 +32,21 @@ class App extends Component {
     this.refs.new.value = ''
   }
 
+  delete(i) {
+    let todosCopy = this.state.todos
+    todosCopy.splice(i, 1)
+    this.setState({
+      todos: todosCopy
+    })
+  }
+
   render() {
-    let todos = this.state.todos.map((todo, index) => {
-      return <Todo content={todo} key={index} />
+    let todos = this.state.todos.map((content, i) => {
+      return <Todo content={content} i={i} key={i} delete={() => this.delete(i)} />
     })
     return (
       <div>
-        <form onSubmit={e => this.createTodo(e)}>
+        <form onSubmit={e => this.create(e)}>
           <input type="text" placeholder="add a todo" ref="new" onChange={e => this.newChange(e)} />
         </form>
         <ul>
