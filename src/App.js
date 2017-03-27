@@ -19,6 +19,16 @@ class List extends Component {
       todos: todosArray
     });
   }
+  markIncomplete(e, index){
+    let todosArray = this.state.todos;
+    let completeTodosArray = this.state.completeTodos;
+    todosArray.push(completeTodosArray[index]);
+    completeTodosArray.splice(index, 1);
+    this.setState({
+      completeTodos: completeTodosArray,
+      todos: todosArray
+    });
+  }
   editTodo(e, index){
     let newTodo = prompt("What is the new Todo?");
     let todoArray = this.state.todos;
@@ -40,7 +50,7 @@ class List extends Component {
     todosArray.push(newTodo);
     this.setState({
       todos: todosArray
-    })
+    });
   }
   render(){
     let todos = this.props.todos.map( (todo, index) => (
@@ -51,9 +61,11 @@ class List extends Component {
         <button onClick={(e, key) => this.deleteTodo(e, index)}>Delete Todo</button></p>
       </div>
     ))
-    console.log(todos)
     let completeTodos = this.props.completeTodos.map( (completeTodo, index) => (
-      <li key={index}>{completeTodo}</li>
+      <div>
+        <p key={index}>{completeTodo}<span> - </span>
+        <button onClick={(e, key) => this.markIncomplete(e, index)}>Mark Incomplete</button></p>
+      </div>
     ))
     return(<div>
       <h2>{this.props.title}</h2>
