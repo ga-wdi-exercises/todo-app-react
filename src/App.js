@@ -2,10 +2,14 @@
 // Developer TODO: add App component
 import React, {Component} from 'react'
 
+let hideForm = {
+  display: 'inline'
+}
+
 class Todo extends Component {
 
   constructor(props) {
-    super()
+    super(props)
     this.addTodo = this.addTodo.bind(this)
     this.deleteTodo = this.deleteTodo.bind(this)
     this.editTodo = this.editTodo.bind(this)
@@ -16,7 +20,6 @@ class Todo extends Component {
 
     }
   }
-
 
   addTodo(e){
     e.preventDefault()
@@ -55,10 +58,27 @@ class Todo extends Component {
   }
 
   editTodo(index){
+
+    // console.log("editTodo");
     let todos = this.state.todos
     let todo = todos.find(function(todo){
       return todo.index === index
     })
+    // change hideForm to display inline
+
+    // let name = this.refs.newName.value
+    let name = this.refs.name.value
+    let updatedTodo = {
+      ...todo,
+      name
+    }
+    console.log(updatedTodo);
+
+
+  }
+
+  updateTodo(index){
+    event.preventDefault()
 
   }
 
@@ -76,15 +96,24 @@ render(){
       <button onClick={this.addTodo}>Add New Todo</button>
       </form>
       <ul>
-        {todos.map((todo => <li key={todo.index}>{todo.name}
-          <button onClick={this.deleteTodo.bind(null, todo.index)}>Delete</button>
-          <button onClick={this.editTodo.bind(null, todo.index)}>Edit</button>
+        {todos.map((todo =>
+          <li key={todo.index}>{todo.name}
+            <button onClick={ _ => this.deleteTodo(todo.index) }>Delete</button>
+            <button onClick={ _ => this.editTodo(todo.index) }>Edit</button>
           </li>))}
       </ul>
+
+      <form style={hideForm}>
+        <input type="text" name="editTodo" ref="newName" />
+        <button onClick={ _ => this.updateTodo(todo.index) }>Update</button>
+      </form>
 
       </div>
   )
 }
+
+// <button onClick={this.deleteTodo.bind(null, todo.index)}>Delete</button>
+// <button onClick={this.editTodo.bind(null, todo.index)}>Edit</button>
 
 }
 
