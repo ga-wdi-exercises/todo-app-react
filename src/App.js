@@ -1,57 +1,65 @@
 import React, {Component} from 'react'
-import Todo from './Todo.js'
+import Todo from './Todo'
+import New from './New'
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
-      new: '',
+      newContent: '',
       todos: [
-        'a',
-        'b',
-        'c',
-        'd',
-        'e',
-        'f',
-        'g'
+        {content: 'a'},
+        {content: 'b'},
+        {content: 'c'},
+        {content: 'd'},
+        {content: 'e'}
       ]
     }
   }
 
   newChange(e) {
     this.setState({
-      new: e.target.value
+      newContent: e.target.value
     })
   }
 
   create(e) {
     e.preventDefault()
     this.setState({
-      todos: this.state.todos.concat([this.state.new])
+      newContent: '',
+      todos: this.state.todos.concat({content: [this.state.newContent]})
     })
-    this.refs.new.value = ''
   }
 
   delete(i) {
-    let todosCopy = this.state.todos
-    todosCopy.splice(i, 1)
+    let todos = this.state.todos
+    todos.splice(i, 1)
     this.setState({
-      todos: todosCopy
+      todos
     })
   }
 
   render() {
-    let todos = this.state.todos.map((content, i) => {
-      return <Todo content={content} i={i} key={i} delete={() => this.delete(i)} />
+    let todos = this.state.todos.map((todo, i) => {
+      return (
+        <Todo
+          i={i}
+          key={i}
+          content={todo.content}
+          delete={() => this.delete(i)}
+        />
+      )
     })
     return (
       <div>
-        <form onSubmit={e => this.create(e)}>
-          <input type="text" placeholder="add a todo" ref="new" onChange={e => this.newChange(e)} />
-        </form>
-        <ul>
+        <New
+          newContent={this.state.newContent}
+          newChange={e => this.newChange(e)}
+          create={e => this.create(e)}
+        />
+        <div>
           {todos}
-        </ul>
+        </div>
       </div>
     )
   }
