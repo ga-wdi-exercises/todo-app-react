@@ -16,7 +16,7 @@ class TodoContainer extends Component {
     }
   }
 
-
+// create a new task functions
   setNewTaskTitle(e){
     this.setState({
       newTitle: e.target.value
@@ -42,6 +42,17 @@ class TodoContainer extends Component {
     })
   }
 
+// delete task functions
+  deleteTask(e, index){
+    e.preventDefault()
+    let array = this.state.tasks
+      array.splice(index, 1)
+    this.setState({
+      tasks: array
+    })
+  }
+
+
   render(){
 
     return(
@@ -52,6 +63,7 @@ class TodoContainer extends Component {
           setNewTaskTitle={(e) => { this.setNewTaskTitle(e) }}
           setNewTaskContent={(e) => { this.setNewTaskContent(e) }}
           onCreateSubmit={(e) => { this.handleCreateSubmit(e) }}
+          onDeleteTask={(e, index) => { this.deleteTask(e, index) }}
         />
       </div>
     )
