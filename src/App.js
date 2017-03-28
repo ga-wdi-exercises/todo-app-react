@@ -8,11 +8,11 @@ class App extends Component {
     this.state = {
       newContent: '',
       todos: [
-        {content: 'a'},
-        {content: 'b'},
-        {content: 'c'},
-        {content: 'd'},
-        {content: 'e'}
+        {content: 'aaaaa', isBeingEdited: false},
+        {content: 'bbbbb', isBeingEdited: false},
+        {content: 'ccccc', isBeingEdited: false},
+        {content: 'ddddd', isBeingEdited: false},
+        {content: 'eeeee', isBeingEdited: false}
       ]
     }
   }
@@ -39,14 +39,42 @@ class App extends Component {
     })
   }
 
+  startEditing(i) {
+    let todos = this.state.todos
+    todos[i].isBeingEdited = true
+    this.setState({
+      todos
+    })
+  }
+
+  edit(e, i) {
+    let todos = this.state.todos
+    todos[i].content = e.target.value
+    this.setState({
+      todos
+    })
+  }
+
+  stopEditing(e, i) {
+    e.preventDefault()
+    let todos = this.state.todos
+    todos[i].isBeingEdited = false
+    this.setState({
+      todos
+    })
+  }
+
   render() {
     let todos = this.state.todos.map((todo, i) => {
       return (
         <Todo
-          i={i}
           key={i}
           content={todo.content}
           delete={() => this.delete(i)}
+          isBeingEdited={todo.isBeingEdited}
+          startEditing={() => this.startEditing(i)}
+          edit={e => this.edit(e, i)}
+          stopEditing={e => this.stopEditing(e, i)}
         />
       )
     })
