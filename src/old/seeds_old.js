@@ -80,4 +80,4 @@ class Seeds extends Component {
 
 }
 
-export default seeds
+export default Seeds
