@@ -26,9 +26,9 @@ class Todo extends Component {
 
           <div>
             <button
-            value={this.props.index}
-            onClick={(event) => this.props.removeTodo(event)}>
-            Delete
+              value={this.props.index}
+              onClick={(event) => this.props.removeTodo(event)}>
+              Delete
             </button>
           </div>
         </div>
