@@ -49,6 +49,12 @@ class TodoList extends Component {
            <ul>
             {donetasks}
           </ul>
+          <h3> Create a New Task </h3>
+          <form onSubmit={(event) => {this.props.onCreateSubmit(event)}}>
+           <input type='text' placeholder="New Task Title" onChange={(event) => {this.props.setNewTaskTitle(event)}}></input>
+           <input type='text' placeholder="New Task Specifics" onChange={(event) => {this.props.setNewTaskContent(event)}}></input>
+           <input type='submit'></input>
+          </form>
       </div>
     )
   }
