@@ -13,7 +13,7 @@ class List extends Component {
     let todosArray = this.state.todos;
     let completeTodosArray = this.state.completeTodos;
     completeTodosArray.push(todosArray[index]);
-    todosArray.splice(index, 1);
+    todosArray.slice(index, 1).concat(todosArray.slice(index+1));
     this.setState({
       completeTodos: completeTodosArray,
       todos: todosArray
@@ -23,7 +23,7 @@ class List extends Component {
     let todosArray = this.state.todos;
     let completeTodosArray = this.state.completeTodos;
     todosArray.push(completeTodosArray[index]);
-    completeTodosArray.splice(index, 1);
+    completeTodosArray.slice(index, 1).concat(todosArray.slice(index+1));
     this.setState({
       completeTodos: completeTodosArray,
       todos: todosArray
@@ -39,7 +39,7 @@ class List extends Component {
   }
   deleteTodo(e, index){
     let todosArray = this.state.todos;
-    todosArray.splice(index, 1);
+    todosArray.slice(index, 1).concat(todosArray.slice(index+1));
     this.setState({
       todos: todosArray
     });
