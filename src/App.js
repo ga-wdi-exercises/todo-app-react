@@ -8,20 +8,20 @@ class App extends Component {
     this.state = {
       newContent: '',
       todos: [
-        {content: 'aaaaa', isBeingEdited: false, complete: false},
-        {content: 'bbbbb', isBeingEdited: false, complete: false},
-        {content: 'ccccc', isBeingEdited: false, complete: false},
-        {content: 'ddddd', isBeingEdited: false, complete: false},
-        {content: 'eeeee', isBeingEdited: false, complete: false}
+        {content: 'aaaaa', isBeingEdited: false, isComplete: false},
+        {content: 'bbbbb', isBeingEdited: false, isComplete: false},
+        {content: 'ccccc', isBeingEdited: false, isComplete: false},
+        {content: 'ddddd', isBeingEdited: false, isComplete: false},
+        {content: 'eeeee', isBeingEdited: false, isComplete: false}
       ]
     }
   }
 
-  todosCopy() {
+  copyTodos() {
     return this.state.todos.map(todo => Object.assign({}, todo))
   }
 
-  newChange(e) {
+  editNew(e) {
     this.setState({
       newContent: e.target.value
     })
@@ -29,10 +29,10 @@ class App extends Component {
 
   create(e) {
     e.preventDefault()
-    let todos = this.todosCopy()
+    let todos = this.copyTodos()
     let newTodo = {content: this.state.newContent,
                    isBeingEdited: false,
-                   complete: false}
+                   isComplete: false}
     todos = [...todos, newTodo]
     this.setState({
       newContent: '',
@@ -40,24 +40,8 @@ class App extends Component {
     })
   }
 
-  delete(i) {
-    let todos = this.todosCopy()
-    todos.splice(i, 1)
-    this.setState({
-      todos
-    })
-  }
-
-  edit(e, i) {
-    let todos = this.todosCopy()
-    todos[i].content = e.target.value
-    this.setState({
-      todos
-    })
-  }
-
   startEditing(i) {
-    let todos = this.todosCopy()
+    let todos = this.copyTodos()
     todos[i].isBeingEdited = true
     this.setState({
       todos
@@ -65,7 +49,7 @@ class App extends Component {
   }
 
   edit(e, i) {
-    let todos = this.todosCopy()
+    let todos = this.copyTodos()
     todos[i].content = e.target.value
     this.setState({
       todos
@@ -74,7 +58,7 @@ class App extends Component {
 
   stopEditing(e, i) {
     e.preventDefault()
-    let todos = this.todosCopy()
+    let todos = this.copyTodos()
     todos[i].isBeingEdited = false
     this.setState({
       todos
@@ -82,60 +66,66 @@ class App extends Component {
   }
 
   toggleComplete(i) {
-    let todos = this.todosCopy()
-    todos[i].complete = !todos[i].complete
+    let todos = this.copyTodos()
+    todos[i].isComplete = !todos[i].isComplete
+    this.setState({
+      todos
+    })
+  }
+
+  delete(i) {
+    let todos = this.copyTodos()
+    todos.splice(i, 1)
     this.setState({
       todos
     })
   }
 
   render() {
-    let todos = this.state.todos.map((todo, i) => {
-      if (!todo.complete) {
-        return (
-          <Todo
-            key={i}
-            content={todo.content}
-            delete={() => this.delete(i)}
-            isBeingEdited={todo.isBeingEdited}
-            startEditing={() => this.startEditing(i)}
-            edit={e => this.edit(e, i)}
-            stopEditing={e => this.stopEditing(e, i)}
-            toggleComplete={() => this.toggleComplete(i)}
-          />
-        )
+    const todos = {
+      complete: [],
+      incomplete: []
+    }
+
+    const todoComponent = (todo, i) => {
+      return (
+        <Todo
+          key={i}
+          content={todo.content}
+          isBeingEdited={todo.isBeingEdited}
+          isComplete={todo.isComplete}
+          startEditing={() => this.startEditing(i)}
+          edit={e => this.edit(e, i)}
+          stopEditing={e => this.stopEditing(e, i)}
+          toggleComplete={() => this.toggleComplete(i)}
+          delete={() => this.delete(i)}
+        />
+      )
+    }
+
+    this.state.todos.forEach((todo, i) => {
+      let component = todoComponent(todo, i)
+      if (todo.isComplete) {
+        todos.complete.push(component)
+      } else {
+        todos.incomplete.push(component)
       }
     })
-    let completedTodos = this.state.todos.map((todo, i) => {
-      if (todo.complete) {
-        return (
-          <Todo
-            key={i}
-            content={todo.content}
-            delete={() => this.delete(i)}
-            isBeingEdited={todo.isBeingEdited}
-            startEditing={() => this.startEditing(i)}
-            edit={e => this.edit(e, i)}
-            stopEditing={e => this.stopEditing(e, i)}
-            toggleComplete={() => this.toggleComplete(i)}
-          />
-        )
-      }
-    })
+
     return (
       <div>
         <New
           newContent={this.state.newContent}
-          newChange={e => this.newChange(e)}
+          editNew={e => this.editNew(e)}
           create={e => this.create(e)}
         />
         <div>
           <h2>Todos</h2>
-          {todos}
+          <ul>{todos.incomplete}</ul>
         </div>
         <div>
-          <h2>Competed Todos</h2>
-          {completedTodos}
+          <h2>Complete Todos</h2>
+          <ul>{todos.complete}</ul>
         </div>
       </div>
     )

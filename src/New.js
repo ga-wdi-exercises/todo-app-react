@@ -8,7 +8,7 @@ class New extends Component {
           type="text"
           value={this.props.newContent}
           placeholder="add a todo"
-          onChange={e => this.props.newChange(e)}
+          onChange={e => this.props.editNew(e)}
         />
       </form>
     )

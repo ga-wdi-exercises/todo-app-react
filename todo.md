@@ -1,6 +1,3 @@
-Figure out why checks are disappearing.
-DRY things up.
-
 **Gold**
 * As a user, I should be able to make a new list
 * As a user, I should be able to edit a list
