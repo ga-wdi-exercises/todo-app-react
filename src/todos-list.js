@@ -18,7 +18,6 @@ class TodosList extends Component {
       <br/><br/>
       <table>
         <tbody>
-
           <th>Task</th>
           <th>Action</th>
           {this.renderItems()}
