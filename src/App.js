@@ -7,26 +7,45 @@ class App extends Component {
     super(props)
     this.state = {
       todos: [
-        {task: "Take out trash."},
-        {task: "Watch Netflix."},
-        {task: "Call mom."},
-        {task: "Play softball."},
-        {task: "Buy ketchup."}
+        {task: "Take out trash.", done: false},
+        {task: "Watch Netflix.", done: false},
+        {task: "Call mom.", done: false},
+        {task: "Play softball.", done: false},
+        {task: "Buy ketchup.", done: false}
       ]
     }
   }
+  handleNew(event){
+    todo.push({
+      task: event.target.value,
+      done: false
+    })
+  }
+  handleDone(event){
+      event.preventDefault()
+      this.setState({done: true})
+    }
+
   render(){
     console.log(this.state.todos)
     let todos = this.state.todos.map((todo, index) => {
-      return <div>{todo.task}</div>
+      return <div className="task">
+        {todo.task}
+        <button onClick={(event) => this.handleDone(event)} type="submit"value={todo.task}>Done</button>
+      </div>
     })
     return(
       <div>
         <h1>Todos</h1>
         {todos}
+        <form>
+          <input onChange={(event) => this.handleNew(event)} type="text" placeholder="New Todo"/>
+          <button type="submit">Submit</button>
+        </form>
       </div>
     )
   }
 }
+
 
 export default App;
