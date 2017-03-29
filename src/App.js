@@ -4,9 +4,7 @@ import React, {Component} from 'react'
 import TodosList from "./todos-list"
 import AddTodo from './add-todo'
 import './index.css'
-// let hideForm = {
-//   display: 'inline'
-// }
+
 
 const todos = [
   {
@@ -14,7 +12,11 @@ const todos = [
     completed: false
   },
   {
-    task: 'Eat Dinner',
+    task: 'Do Laundry',
+    completed: false
+  },
+  {
+    task: 'Walk the Dog',
     completed: false
   }
 ]
