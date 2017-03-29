@@ -1,6 +1,3 @@
-* As a user, I should able to edit a todo's content
-* As a user, I should be able to mark a todo as completed
-
 **Silver**
 * As a user, I should be able to also see a list of my completed todos
 * As a user, when I mark a todo as complete, it should be added to my completed todos list

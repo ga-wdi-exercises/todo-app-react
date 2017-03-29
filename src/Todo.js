@@ -18,6 +18,7 @@ class Todo extends Component {
     } else {
       return (
         <li>
+          <input type="checkbox" value={this.props.complete} onChange={this.props.toggleComplete} />
           <span onClick={this.props.startEditing}>{this.props.content}</span>
           <button onClick={this.props.delete}>x</button>
         </li>

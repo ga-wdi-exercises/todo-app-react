@@ -8,11 +8,11 @@ class App extends Component {
     this.state = {
       newContent: '',
       todos: [
-        {content: 'aaaaa', isBeingEdited: false},
-        {content: 'bbbbb', isBeingEdited: false},
-        {content: 'ccccc', isBeingEdited: false},
-        {content: 'ddddd', isBeingEdited: false},
-        {content: 'eeeee', isBeingEdited: false}
+        {content: 'aaaaa', isBeingEdited: false, complete: false},
+        {content: 'bbbbb', isBeingEdited: false, complete: false},
+        {content: 'ccccc', isBeingEdited: false, complete: false},
+        {content: 'ddddd', isBeingEdited: false, complete: false},
+        {content: 'eeeee', isBeingEdited: false, complete: false}
       ]
     }
   }
@@ -64,6 +64,14 @@ class App extends Component {
     })
   }
 
+  toggleComplete(i) {
+    let todos = this.state.todos
+    todos[i].complete = !todos[i].complete
+    this.setState({
+      todos
+    })
+  }
+
   render() {
     let todos = this.state.todos.map((todo, i) => {
       return (
@@ -75,6 +83,7 @@ class App extends Component {
           startEditing={() => this.startEditing(i)}
           edit={e => this.edit(e, i)}
           stopEditing={e => this.stopEditing(e, i)}
+          toggleComplete={() => this.toggleComplete(i)}
         />
       )
     })
