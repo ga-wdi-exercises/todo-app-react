@@ -17,6 +17,10 @@ class App extends Component {
     }
   }
 
+  todosCopy() {
+    return this.state.todos.map(todo => Object.assign({}, todo))
+  }
+
   newChange(e) {
     this.setState({
       newContent: e.target.value
@@ -25,22 +29,35 @@ class App extends Component {
 
   create(e) {
     e.preventDefault()
+    let todos = this.todosCopy()
+    let newTodo = {content: this.state.newContent,
+                   isBeingEdited: false,
+                   complete: false}
+    todos = [...todos, newTodo]
     this.setState({
       newContent: '',
-      todos: this.state.todos.concat({content: [this.state.newContent]})
+      todos
     })
   }
 
   delete(i) {
-    let todos = this.state.todos
+    let todos = this.todosCopy()
     todos.splice(i, 1)
     this.setState({
       todos
     })
   }
 
+  edit(e, i) {
+    let todos = this.todosCopy()
+    todos[i].content = e.target.value
+    this.setState({
+      todos
+    })
+  }
+
   startEditing(i) {
-    let todos = this.state.todos
+    let todos = this.todosCopy()
     todos[i].isBeingEdited = true
     this.setState({
       todos
@@ -48,7 +65,7 @@ class App extends Component {
   }
 
   edit(e, i) {
-    let todos = this.state.todos
+    let todos = this.todosCopy()
     todos[i].content = e.target.value
     this.setState({
       todos
@@ -57,7 +74,7 @@ class App extends Component {
 
   stopEditing(e, i) {
     e.preventDefault()
-    let todos = this.state.todos
+    let todos = this.todosCopy()
     todos[i].isBeingEdited = false
     this.setState({
       todos
@@ -65,12 +82,11 @@ class App extends Component {
   }
 
   toggleComplete(i) {
-    let todos = this.state.todos
+    let todos = this.todosCopy()
     todos[i].complete = !todos[i].complete
     this.setState({
       todos
     })
-    console.log('Hi!')
   }
 
   render() {
