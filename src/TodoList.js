@@ -14,7 +14,7 @@ class TodoList extends Component {
                 <h4>{todo.title}</h4>
                   <p>{todo.content}</p>
                   <p>
-                    <input type="checkbox"></input>
+                    <input type="checkbox" onClick={(e) => {this.props.onComplete(e, index)}}></input>
                     Mark Complete
                   </p>
                   <button onClick={(e) => {this.props.onDeleteTask(e, index)}}> Delete </button>
@@ -32,7 +32,7 @@ class TodoList extends Component {
                 <h4>{todo.title}</h4>
                   <p>{todo.content}</p>
                   <p>
-                    <input type="checkbox"></input>
+                    <input type="checkbox" onClick={(e) => {this.props.changeToIncomplete(e, index)}}></input>
                     Mark Incomplete
                   </p>
                   <button value={todo.title} onClick={(e) => {this.props.onDeleteTask(e, index)}}> Delete </button>

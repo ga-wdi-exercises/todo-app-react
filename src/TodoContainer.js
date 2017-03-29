@@ -52,6 +52,28 @@ class TodoContainer extends Component {
     })
   }
 
+  // change completion status
+  changeToComplete(e, index){
+    e.preventDefault()
+    console.log(e.target.value)
+    let array = this.state.tasks
+    array[index].completion = true
+    this.setState({
+      tasks: array
+    })
+  }
+
+  changeToIncomplete(e, index){
+    e.preventDefault()
+    console.log(e.target.value)
+    let array = this.state.tasks
+    array[index].completion = false
+    this.setState({
+      tasks: array
+    })
+  }
+
+
 
   render(){
 
@@ -64,6 +86,8 @@ class TodoContainer extends Component {
           setNewTaskContent={(e) => { this.setNewTaskContent(e) }}
           onCreateSubmit={(e) => { this.handleCreateSubmit(e) }}
           onDeleteTask={(e, index) => { this.deleteTask(e, index) }}
+          onComplete={(e, index) => { this.changeToComplete(e, index) }}
+          changeToIncomplete={(e, index) => { this.changeToIncomplete(e, index) }}
         />
       </div>
     )
