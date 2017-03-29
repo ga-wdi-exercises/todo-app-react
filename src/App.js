@@ -10,20 +10,16 @@ class List extends Component {
     };
   }
   markComplete(e, index){
-    let todosArray = this.state.todos;
-    let completeTodosArray = this.state.completeTodos;
-    completeTodosArray.push(todosArray[index]);
-    todosArray.slice(index, 1).concat(todosArray.slice(index+1));
+    let completeTodosArray = this.state.completeTodos.push(this.state.todos[index]);
+    let todosArray = this.state.todos.slice(index, 1).concat(this.state.todos.slice(index+1));
     this.setState({
       completeTodos: completeTodosArray,
       todos: todosArray
     });
   }
   markIncomplete(e, index){
-    let todosArray = this.state.todos;
-    let completeTodosArray = this.state.completeTodos;
-    todosArray.push(completeTodosArray[index]);
-    completeTodosArray.slice(index, 1).concat(todosArray.slice(index+1));
+    let todosArray = this.state.todos.push(this.state.completeTodos[index]);
+    let completeTodosArray = this.state.completeTodos.slice(index, 1).concat(this.state.completeTodos.slice(index+1));
     this.setState({
       completeTodos: completeTodosArray,
       todos: todosArray
@@ -38,16 +34,14 @@ class List extends Component {
     });
   }
   deleteTodo(e, index){
-    let todosArray = this.state.todos;
-    todosArray.slice(index, 1).concat(todosArray.slice(index+1));
+    let todosArray = this.state.todos.slice(index, 1).concat(this.state.todos.slice(index+1));
     this.setState({
       todos: todosArray
     });
   }
   createTodo(e){
-    let todosArray = this.state.todos;
     let newTodo = prompt("What do you need to do?");
-    todosArray.push(newTodo);
+    let todosArray = this.state.todos.push(newTodo);
     this.setState({
       todos: todosArray
     });
