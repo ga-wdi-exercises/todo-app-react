@@ -2,9 +2,9 @@ import React, {Component} from 'react'
 
 class Todo extends Component {
   render () {
-    if (this.props.isBeingEdited) {
-      return (
-        <li>
+    const contentComponent = () => {
+      if (this.props.isBeingEdited) {
+        return (
           <form onSubmit={e => this.props.stopEditing(e)}>
             <input
               type="text"
@@ -12,18 +12,26 @@ class Todo extends Component {
               onChange={e => this.props.edit(e)}
             />
           </form>
-          <button onClick={this.props.delete}>x</button>
-        </li>
-      )
-    } else {
-      return (
-        <li>
-          <input type="checkbox" checked={this.props.isComplete} onChange={this.props.toggleComplete} />
-          <span onClick={this.props.startEditing}>{this.props.content}</span>
-          <button onClick={this.props.delete}>x</button>
-        </li>
-      )
+        )
+      } else {
+        return (
+          <span onClick={this.props.startEditing}>
+            {this.props.content}
+          </span>
+        )
+      }
     }
+    return (
+      <li>
+        <input
+          type="checkbox"
+          checked={this.props.isComplete}
+          onChange={this.props.toggleComplete}
+        />
+        {contentComponent()}
+        <button onClick={this.props.delete}>x</button>
+      </li>
+    )
   }
 }
 
