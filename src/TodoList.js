@@ -17,6 +17,9 @@ class TodoList extends Component {
                     <input type="checkbox" onClick={(e) => {this.props.onComplete(e, index)}}></input>
                     Mark Complete
                   </p>
+                  <p> Edit </p>
+                  <input value={todo.title} onChange={(e) => {this.props.handleEditTaskTitle(e, index)}} />
+                  <input value={todo.content} onChange={(e) => {this.props.handleEditTaskContent(e, index)}} />
                   <button onClick={(e) => {this.props.onDeleteTask(e, index)}}> Delete </button>
 
               </li>
@@ -35,7 +38,10 @@ class TodoList extends Component {
                     <input type="checkbox" onClick={(e) => {this.props.changeToIncomplete(e, index)}}></input>
                     Mark Incomplete
                   </p>
-                  <button value={todo.title} onClick={(e) => {this.props.onDeleteTask(e, index)}}> Delete </button>
+                  <p> Edit </p>
+                  <input value={todo.title} onChange={(e) => {this.props.handleEditTaskTitle(e, index)}} />
+                  <input value={todo.content} onChange={(e) => {this.props.handleEditTaskContent(e, index)}} />
+                  <button onClick={(e) => {this.props.onDeleteTask(e, index)}}> Delete </button>
              </li>
 
            )
@@ -44,7 +50,7 @@ class TodoList extends Component {
 
     return(
       <div>
-          <h2> Need To Complete </h2>
+          <h2> Incomplete Tasks </h2>
           <ul>
             {undonetasks}
            </ul>
@@ -54,8 +60,8 @@ class TodoList extends Component {
           </ul>
           <h3> Create a New Task </h3>
           <form onSubmit={(event) => {this.props.onCreateSubmit(event)}}>
-           <input type='text' placeholder="New Task Title" onChange={(event) => {this.props.setNewTaskTitle(event)}}></input>
-           <input type='text' placeholder="New Task Specifics" onChange={(event) => {this.props.setNewTaskContent(event)}}></input>
+           <input type='text' placeholder="New Task Title" value={this.props.newTitle} onChange={(event) => {this.props.setNewTaskTitle(event)}}></input>
+           <input type='text' placeholder="New Task Specifics" value={this.props.newContent}  onChange={(event) => {this.props.setNewTaskContent(event)}}></input>
            <input type='submit'></input>
           </form>
       </div>
