@@ -5,6 +5,7 @@ class Todo extends Component {
     return (
       <li>
         {this.props.content}
+        <button onClick={this.props.delete}>Delete</button>
       </li>
     )
   }
