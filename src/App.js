@@ -1,124 +1,74 @@
 
 // Developer TODO: add App component
 import React, {Component} from 'react'
+import TodosList from "./todos-list"
+import AddTodo from './add-todo'
+import './index.css'
+// let hideForm = {
+//   display: 'inline'
+// }
 
-let hideForm = {
-  display: 'inline'
-}
+const todos = [
+  {
+    task: 'Make React Todo App',
+    completed: false
+  },
+  {
+    task: 'Eat Dinner',
+    completed: false
+  }
+]
+
 
 class Todo extends Component {
-
-  constructor(props) {
+  constructor(props){
     super(props)
-    this.addTodo = this.addTodo.bind(this)
-    this.deleteTodo = this.deleteTodo.bind(this)
-    this.editTodo = this.editTodo.bind(this)
-    this.state = {
-      todos: [],
-      title: "Todo App",
-      index: 0
 
+    this.state= {
+      todos
     }
   }
 
-  addTodo(e){
-    e.preventDefault()
-    let name = this.refs.name.value
-    let completed = this.refs.completed.value
-    let index = this.state.index
+  addTask(task){
+    this.state.todos.push({
+      task,
+      isCompleted: false
+    })
+    this.setState({
+      todos: this.state.todos
+    })
+  }
 
-    let todo = {
-      name,
-      completed,
-      index
-    }
-    index +=1
-    let todos = this.state.todos
-    todos.push(todo)
+  saveTask(oldTask, newTask){
+    const foundTodo = _.find(this.state.todos, todo => todo.task === oldTask)
+    foundTodo.task = newTask
 
     this.setState({
-      todos: todos,
-      index: index
+      todos: this.state.todos
     })
-
-    this.refs.todoForm.reset
-
   }
 
-  deleteTodo(index){
-    let todos = this.state.todos
-    let todo = todos.find(function(todo){
-      return todo.index === index
-    })
-    todos.splice(todo, 1)
-
+  deleteTask(taskToDelete){
+    _.remove(this.state.todos, todo => todo.task === taskToDelete)
     this.setState({
-      todos: todos
+      todos: this.state.todos
     })
   }
 
-  editTodo(index){
-
-    // console.log("editTodo");
-    let todos = this.state.todos
-    let todo = todos.find(function(todo){
-      return todo.index === index
-    })
-    // change hideForm to display inline
-
-    // let name = this.refs.newName.value
-    let name = this.refs.name.value
-    let updatedTodo = {
-      ...todo,
-      name
-    }
-    console.log(updatedTodo);
-
-
-  }
-
-  updateTodo(index){
-    event.preventDefault()
-
-  }
-
-
-render(){
-  let title = this.state.title
-  let todos = this.state.todos
-
-  return(
-    <div>
-      <h2> {title} </h2>
-      <form ref="todoForm">
-      <input type="text" ref="name" placeholder="Todo"/>
-      <input type="text" ref="completed" placeholder="Completed"/>
-      <button onClick={this.addTodo}>Add New Todo</button>
-      </form>
-      <ul>
-        {todos.map((todo =>
-          <li key={todo.index}>{todo.name}
-            <button onClick={ _ => this.deleteTodo(todo.index) }>Delete</button>
-            <button onClick={ _ => this.editTodo(todo.index) }>Edit</button>
-          </li>))}
-      </ul>
-
-      <form style={hideForm}>
-        <input type="text" name="editTodo" ref="newName" />
-        <button onClick={ _ => this.updateTodo(todo.index) }>Update</button>
-      </form>
-
+  render(){
+    return(
+      <div className="container">
+        <h1>Todo App</h1>
+        <br/>
+        <AddTodo  todos={this.state.todos} addTask={this.addTask.bind(this)}/>
+        <TodosList
+          todos={this.state.todos}
+          saveTask={this.saveTask.bind(this)}
+          deleteTask={this.deleteTask.bind(this)}
+          />
       </div>
-  )
+    )
+  }
 }
-
-// <button onClick={this.deleteTodo.bind(null, todo.index)}>Delete</button>
-// <button onClick={this.editTodo.bind(null, todo.index)}>Edit</button>
-
-}
-
-
-
-
 
 export default Todo
