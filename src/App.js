@@ -70,22 +70,41 @@ class App extends Component {
     this.setState({
       todos
     })
+    console.log('Hi!')
   }
 
   render() {
     let todos = this.state.todos.map((todo, i) => {
-      return (
-        <Todo
-          key={i}
-          content={todo.content}
-          delete={() => this.delete(i)}
-          isBeingEdited={todo.isBeingEdited}
-          startEditing={() => this.startEditing(i)}
-          edit={e => this.edit(e, i)}
-          stopEditing={e => this.stopEditing(e, i)}
-          toggleComplete={() => this.toggleComplete(i)}
-        />
-      )
+      if (!todo.complete) {
+        return (
+          <Todo
+            key={i}
+            content={todo.content}
+            delete={() => this.delete(i)}
+            isBeingEdited={todo.isBeingEdited}
+            startEditing={() => this.startEditing(i)}
+            edit={e => this.edit(e, i)}
+            stopEditing={e => this.stopEditing(e, i)}
+            toggleComplete={() => this.toggleComplete(i)}
+          />
+        )
+      }
+    })
+    let completedTodos = this.state.todos.map((todo, i) => {
+      if (todo.complete) {
+        return (
+          <Todo
+            key={i}
+            content={todo.content}
+            delete={() => this.delete(i)}
+            isBeingEdited={todo.isBeingEdited}
+            startEditing={() => this.startEditing(i)}
+            edit={e => this.edit(e, i)}
+            stopEditing={e => this.stopEditing(e, i)}
+            toggleComplete={() => this.toggleComplete(i)}
+          />
+        )
+      }
     })
     return (
       <div>
@@ -95,7 +114,12 @@ class App extends Component {
           create={e => this.create(e)}
         />
         <div>
+          <h2>Todos</h2>
           {todos}
+        </div>
+        <div>
+          <h2>Competed Todos</h2>
+          {completedTodos}
         </div>
       </div>
     )

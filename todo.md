@@ -1,7 +1,5 @@
-**Silver**
-* As a user, I should be able to also see a list of my completed todos
-* As a user, when I mark a todo as complete, it should be added to my completed todos list
-* As a user, when I mark a completed todo as incomplete, it should be added to my todos list
+DRY things up.
+Figure out why checks are disappearing.
 
 **Gold**
 * As a user, I should be able to make a new list
