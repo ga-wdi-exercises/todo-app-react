@@ -1,4 +1,6 @@
-// Developer TODO: add App component
+                                        // <!-- // ###########################################
+                                        // // 201703292130L   EL MIERCOLES   JAY -->
+
 import React, { Component } from 'react';
 
 class TodoList extends Component {
