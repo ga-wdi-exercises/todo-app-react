@@ -1,5 +1,5 @@
-                                        // <!-- // ###########################################
-                                        // // 201703292130L   EL MIERCOLES   JAY -->
+                            // <!-- // ###########################################
+                            // // 201703292130L   EL MIERCOLES   JAY -->
 
 import React, { Component } from 'react';
 
@@ -7,14 +7,15 @@ class TodoList extends Component {
   constructor(props){
     super(props);
     this.state = {
-                  stillTodos:     props.stillTodos,                   //--> total list of tasks to do
+                  stillTodos:     props.stillTodos,       //--> total list of tasks to do
                   completedTodos: props.completedTodos    // --> tasks that have been completed
                 };
   }
-  /*
-   Handle the button click event to mark the task indicated by the index to
-   complete.
-  */
+                          // GIRO: IF WE CREATED A METHOD TO COPY A TODO, THEN IT MIGHT LOOK LIKE THIS,
+                          // NATs APPROACH
+                          // todosCopy() {
+                          //   return this.state.todos.map(todo => Object.assign({}, todo))
+  /* Handle the button click event to mark the task indicated by the index to complete. */
   markItComplete(e, index){
                             let stillTodosArray =     this.state.stillTodos;
                             let completedTodosArray = this.state.completedTodos;
@@ -25,10 +26,7 @@ class TodoList extends Component {
                                             completedTodos: completedTodosArray
                                           });
                           }
-  /*
-    Handle the button click event to mark the task indicated by the index to
-    be incomplete.
-  */
+  /* Handle the button click event to mark the task indicated by the index to be incomplete. */
   markItIncomplete(e, index){
                               let stillTodosArray =     this.state.stillTodos;
                               let completedTodosArray = this.state.completedTodos;
@@ -39,9 +37,7 @@ class TodoList extends Component {
                                               completedTodos: completedTodosArray
                                             });
                             }
-  /*
-     Respond to the prompt by providing an updated task description.
-  */
+  /* Respond to the prompt by providing an updated task description. */
   editExistingTodo(e, index){
                             let newTodo = prompt("Update your task here.");
                             let stillTodosArray =     this.state.stillTodos;
@@ -50,9 +46,7 @@ class TodoList extends Component {
                                             stillTodos: stillTodosArray
                                           });
                             }
-  /*
-     Respond to the event by removing the "to do" task indicated by the index.
-  */
+  /* Respond to the event by removing the "to do" task indicated by the index. */
   deleteTodo(e, index){
                           let stillTodosArray = this.state.stillTodos;
                           stillTodosArray.splice(index, 1);
@@ -60,9 +54,7 @@ class TodoList extends Component {
                                           stillTodos: stillTodosArray
                                         });
                         }
-  /*
-     Create a new "to do" task and add it to the end of the list.
-  */
+  /* Create a new "to do" task and add it to the end of the list. */
   createTodo(e){
                           let stillTodosArray = this.state.stillTodos;
                           let newTodo = prompt("What new task do you need to add to your list?");
