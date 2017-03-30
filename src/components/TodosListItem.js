@@ -29,7 +29,7 @@ render(){
   return(
         <thead>
           <tr>
-            <td>{this.props.task }</td>
+            <td>{this.props.task}</td>
             <td>
               {this.renderActionsSection()}
             </td>
@@ -38,7 +38,7 @@ render(){
       )
     }
     onEditClick(){
-      this.setState({ isEditing: true})
+      this.setState({isEditing: true})
     }
     onCancelClick(){
       this.setState({isEditing: false })
