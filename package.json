@@ -3,11 +3,19 @@
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
-    "react-scripts": "0.2.1"
+    "@types/selenium-webdriver": "^2.44.26",
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
+    "react-hot-loader": "^1.3.1",
+    "react-scripts": "0.2.1",
+    "webpack": "^2.1.0-beta.21",
+    "webpack-dev-server": "^2.4.2"
   },
   "dependencies": {
-    "react": "^15.2.1",
-    "react-dom": "^15.2.1"
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -16,5 +24,18 @@
   },
   "eslintConfig": {
     "extends": "./node_modules/react-scripts/config/eslint.js"
-  }
+  },
+  "description": "Today's objective is to apply the fundamentals of what we learned so far by building a Todo app in React.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cjwightman/todo-app-react.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cjwightman/todo-app-react/issues"
+  },
+  "homepage": "https://github.com/cjwightman/todo-app-react#readme"
 }
