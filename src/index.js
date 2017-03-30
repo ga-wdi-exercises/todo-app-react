@@ -12,7 +12,8 @@ const list = {
     "Promote synergy"
   ],
   completeTodos: [
-    "Make Todo App"
+    "Make Todo App",
+    "Test"
   ]
 };
 
