@@ -1,1 +1,3 @@
-// Developer TODO: add application entry point
+let message = "Hello from Entry";
+
+console.log(message)
