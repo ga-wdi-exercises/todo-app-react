@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './App.css'
 
 class List extends Component {
   constructor(props){
@@ -53,17 +54,17 @@ class List extends Component {
   }
   render(){
     let todos = this.state.todos.map( (todo, index) => (
-      <div>
-        <p key={index}>{todo}<span> - </span>
-        <button onClick={(e, key) => this.markComplete(e, index)}>Mark Complete</button>
-        <button onClick={(e, key) => this.editTodo(e, index)}>Edit Todo</button>
-        <button onClick={(e, key) => this.deleteTodo(e, index)}>Delete Todo</button></p>
-      </div>
+        <div className="todos">
+          <p key={index}>{todo}
+          <button className="left-button" onClick={(e, key) => this.markComplete(e, index)}>Mark Complete</button>
+          <button className="middle-button" onClick={(e, key) => this.editTodo(e, index)}>Edit Todo</button>
+          <button onClick={(e, key) => this.deleteTodo(e, index)}>Delete Todo</button></p>
+        </div>
     ))
     let completeTodos = this.state.completeTodos.map( (completeTodo, index) => (
-      <div>
-        <p key={index}>{completeTodo}<span> - </span>
-        <button onClick={(e, key) => this.markIncomplete(e, index)}>Mark Incomplete</button></p>
+      <div className="completeTodos">
+        <p key={index}>{completeTodo}
+        <button className="left-button" onClick={(e, key) => this.markIncomplete(e, index)}>Mark Incomplete</button></p>
       </div>
     ))
     return(<div>
