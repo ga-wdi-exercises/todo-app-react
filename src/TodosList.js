@@ -61,6 +61,35 @@ class TodosList extends Component {
     })
   }
 
+  seteditTodoTitle(evt) {
+
+    this.setState({
+      newTodoTitle: evt.target.value
+    })
+  }
+
+  seteditTodoBody(evt) {
+
+    this.setState({
+      newTodoBody: evt.target.value
+    })
+  }
+  editTodo(evt) {
+    evt.preventDefault()
+    let editedTodo={
+      title: this.state.editTodoTitle,
+      body: this.state.editTodoBody,
+      completed: false
+    }
+    let editTodoSet = this.state.todos.slice()
+    editTodoSet.push(editedTodo)
+    this.setState({
+      todos: editTodoSet,
+      addTodo: false,
+      editTodoTitle: '',
+      editTodoBody: ''
+    })
+}
   render() {
     let todos = this.state.todos.map((todo, index) => {
       return(
@@ -70,6 +99,7 @@ class TodosList extends Component {
           key={index}
           index={index}
           removeTodo={ (evt) => this.removeTodo(evt)}
+          editTodo={(evt) => this.editTodo(evt)}
         />
       )
     })

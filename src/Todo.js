@@ -26,7 +26,7 @@ class Todo extends Component {
           <div>
             <button
               value={this.props.index}
-              onClick={(evt) => this.props.removeTodo(evt)}>
+              onClick={(evt) => this.props.removeTodo(evt)} className="btn btn-info btn-lg">
                 Remove
             </button>
           </div>
@@ -40,12 +40,17 @@ class Todo extends Component {
           <p>{body }</p>
           </div>
           <div>
-            <button onClick={() => this.Completed() }></button>
+            <button onClick={() => this.Completed() } className="btn btn-info btn-lg"></button>
           </div>
           <div>
             <button
               value={this.props.index}
-              onClick={(evt) => this.props.removeTodo(evt)}>
+              onClick={(evt) => this.props.editTodo(evt)} className="btn btn-info btn-lg">
+                Edit
+            </button>
+            <button
+              value={this.props.index}
+              onClick={(evt) => this.props.removeTodo(evt)} className="btn btn-info btn-lg">
                 Remove
             </button>
           </div>

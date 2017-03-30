@@ -4,14 +4,14 @@ import React, { Component } from 'react';
      render() {
        if(!this.props.addTodo){
          return(
-           <button onClick={(evt) => this.props.toggleNewTodo(evt) }>Add</button>
+           <button onClick={(evt) => this.props.toggleNewTodo(evt) } className="btn btn-info btn-lg">Add</button>
          )
        } else {
          return(
            <form onSubmit={(evt) => this.props.addNewTodo(evt)}>
-             <input type="text" placeholder="Title" onChange={(evt) => this.props.setNewTodoTitle(evt)}/>
-             <input type="text" placeholder="Todo Details" onChange={(evt) => this.props.setNewTodoBody(evt)}/>
-             <button type="submit">Add Todo</button>
+             <input type="text" className="form-control input-lg" placeholder="Title" onChange={(evt) => this.props.setNewTodoTitle(evt)}/>
+             <input type="text" className="form-control input-lg"placeholder="Todo Details" onChange={(evt) => this.props.setNewTodoBody(evt)}/>
+             <button type="submit" className="btn btn-info btn-lg">Add Todo</button>
            </form>
          )
        }
