@@ -10,7 +10,7 @@
     "react-dom": "^15.2.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=5252 react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject"
   },
